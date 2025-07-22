@@ -40,8 +40,4 @@ jobs:
         with:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}  # Utiliser la clé de service Firebase pour l'authentification
           channelId: "preview-channel"  # Canal de prévisualisation
-          token: ${{ secrets.FIREBASE_TOKEN }}  # Utiliser le token Firebase pour l'authentification
-
-      # Si tu préfères utiliser npx firebase-tools au lieu de l'action officielle :
-      # - name: Deploy to Firebase Hosting
-      #   run: firebase hosting:channel:deploy "preview" --channel-id "preview-channel" --expires 7d --token ${{ secrets.FIREBASE_TOKEN }}
+          expires: "7d"  # Durée de validité du canal (facultatif, à ajuster selon les besoins)
