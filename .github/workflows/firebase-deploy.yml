@@ -8,10 +8,10 @@ permissions:
 on:
   push:
     branches:
-      - production  # Déployer lorsque du code est poussé sur la branche main
+      - production  # Déployer lorsque du code est poussé sur la branche production
   pull_request:
     branches:
-      - production  # Déployer lors des PR sur main (optionnel mais utile)
+      - production  # Déployer lors des PR sur la branche production (optionnel mais utile)
 
 jobs:
   deploy:
@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2  # Récupère le code source de ton dépôt
+        uses: actions/checkout@v2  # Récupère le code source du dépôt
 
       - name: Set up Node.js
         uses: actions/setup-node@v2  # Configure l'environnement Node.js
@@ -33,9 +33,10 @@ jobs:
         run: npm run build  # Construire l'application pour la production
 
       - name: Set up Firebase CLI
-        uses: FirebaseExtended/action-hosting-deploy@v0  # Utilise l'action officielle pour configurer Firebase CLI
+        uses: FirebaseExtended/action-hosting-deploy@v0  # Utilise l'action Firebase pour configurer Firebase CLI
         with:
-          firebase_token: ${{ secrets.FIREBASE_TOKEN }}  # Utiliser le token Firebase pour l'authentification
+          # Utiliser 'repoToken' pour une authentification OAuth (si tu as configuré un token pour ton repo)
+          repoToken: ${{ secrets.GITHUB_TOKEN }}  # Le token de GitHub est utilisé ici pour authentifier le déploiement via GitHub Actions
 
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}  # Déployer l'application sur Firebase
+        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}  # Utilise ton token Firebase pour le déploiement
