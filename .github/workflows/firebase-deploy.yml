@@ -32,10 +32,13 @@ jobs:
       - name: Build the app
         run: npm run build  # Construire l'application pour la production
 
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools@latest  # Installer la dernière version de Firebase CLI
+
       - name: Set up Firebase CLI
         uses: FirebaseExtended/action-hosting-deploy@v0  # Utilise l'action Firebase pour configurer Firebase CLI
         with:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}  # Utiliser la clé de service Firebase pour l'authentification
 
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting --channel preview --channel-id "preview-channel" --token ${{ secrets.FIREBASE_TOKEN }}  # Déploiement vers le channel 'preview'
+        run: firebase hosting:channel:deploy preview --channel-id "preview-channel" --expires 7d --token ${{ secrets.FIREBASE_TOKEN }}  # Utiliser le canal 'preview' avec un ID spécifique
