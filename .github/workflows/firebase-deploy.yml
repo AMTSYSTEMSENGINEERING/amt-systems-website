@@ -38,4 +38,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}  # Utiliser la clé de service Firebase pour l'authentification
 
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting --channel preview --token ${{ secrets.FIREBASE_TOKEN }}  # Déploiement vers le channel 'preview'
+        run: firebase deploy --only hosting --channel preview --channel-id "preview-channel" --token ${{ secrets.FIREBASE_TOKEN }}  # Déploiement vers le channel 'preview'
