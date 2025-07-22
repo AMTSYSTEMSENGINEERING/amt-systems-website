@@ -33,7 +33,7 @@ jobs:
         run: npm run build  # Construire l'application pour la production
 
       - name: Set up Firebase CLI
-        uses: firebase/github-actions/setup@v1  # Utilise l'action officielle pour configurer Firebase CLI
+        uses: FirebaseExtended/action-hosting-deploy@v0  # Utilise l'action officielle pour configurer Firebase CLI
         with:
           firebase_token: ${{ secrets.FIREBASE_TOKEN }}  # Utiliser le token Firebase pour l'authentification
 
