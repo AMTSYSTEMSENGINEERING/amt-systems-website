@@ -8,7 +8,6 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           my first react app with firebase hosting
-        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
