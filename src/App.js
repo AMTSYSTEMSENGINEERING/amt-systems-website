@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code>system to test the hot reloading feature.
+          test de déploiement avec GitHub Actions et Firebase du site AMT Systems.
         </p>
         <a
           className="App-link"

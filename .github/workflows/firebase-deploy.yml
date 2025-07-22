@@ -1,0 +1,36 @@
+name: Firebase Deployment
+
+on:
+  push:
+    branches:
+      - production         # Déployer lorsque du code est poussé sur la branche production
+  pull_request:
+    branches:
+      - production         # Déployer lors des PR sur production (optionnel mais utile)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Exécuter sur Ubuntu
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Récupère le code source de ton dépôt
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2  # Configure l'environnement Node.js
+        with:
+          node-version: '14'  # Définir la version de Node.js à utiliser
+
+      - name: Install dependencies
+        run: npm install  # Installer les dépendances
+
+      - name: Build the app
+        run: npm run build  # Construire l'application pour la production
+
+      - name: Set up Firebase CLI
+        uses: wzieba/Firebase-Action@v2  # Installer Firebase CLI
+        with:
+          firebase_token: ${{ secrets.FIREBASE_TOKEN }}  # Utiliser le token Firebase pour l'authentification
+
+      - name: Deploy to Firebase Hosting
+        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}  # Déployer l'application sur Firebase
