@@ -24,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2  # Configure l'environnement Node.js
         with:
-          node-version: '20'  # Définir la version de Node.js à utiliser
+          node-version: '20'  # Définir la version de Node.js à utiliser (>= 20)
 
       - name: Install dependencies
         run: npm install  # Installer les dépendances
@@ -38,4 +38,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}  # Utiliser la clé de service Firebase pour l'authentification
 
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}  # Utiliser ton token Firebase pour le déploiement
+        run: firebase deploy --only hosting --channel preview --token ${{ secrets.FIREBASE_TOKEN }}  # Déploiement vers le channel 'preview'
