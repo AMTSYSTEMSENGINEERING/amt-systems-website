@@ -7,8 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          test de déploiement avec GitHub Actions et Firebase du site AMT Systems.
-        </p>
+          my first react app with firebase hosting
         <a
           className="App-link"
           href="https://reactjs.org"
