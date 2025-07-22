@@ -1,5 +1,10 @@
 name: Firebase Deployment
 
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
 on:
   push:
     branches:
@@ -9,6 +14,10 @@ on:
       - production  # Déployer lors des PR sur main (optionnel mais utile)
 
 jobs:
+  build_and_preview:
+    runs-on: ubuntu-latest
+    permissions: write-all
+
   deploy:
     runs-on: ubuntu-latest  # Exécuter sur Ubuntu
 
