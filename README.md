@@ -32,7 +32,19 @@ Le site web comprend les sections suivantes :
 
 
 ---
+## 🖼️ Maquette du site
 
+Voici quelques captures de la maquette de notre site web  :
+
+<p align="center">
+  <img src="maquette/maq1.png" width="45%" style="display:inline-block; margin-right: 5%;" />
+  <img src="maquette/maq2.png" width="45%" style="display:inline-block;" />
+</p>
+<p align="center">
+  <img src="maquette/maq3.png" width="45%" style="display:inline-block; margin-right: 5%;" />
+</p>
+
+---
 ## 🚀 Lancer le projet en local
 
 ```bash
