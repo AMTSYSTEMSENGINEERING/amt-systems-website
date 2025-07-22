@@ -24,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2  # Configure l'environnement Node.js
         with:
-          node-version: '14'  # Définir la version de Node.js à utiliser
+          node-version: '20'  # Définir la version de Node.js à utiliser
 
       - name: Install dependencies
         run: npm install  # Installer les dépendances
