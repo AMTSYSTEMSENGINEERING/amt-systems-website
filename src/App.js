@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code>system to test the hot reloading feature.
+          my first react app with firebase hosting
         </p>
         <a
           className="App-link"
