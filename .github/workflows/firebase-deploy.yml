@@ -35,8 +35,7 @@ jobs:
       - name: Set up Firebase CLI
         uses: FirebaseExtended/action-hosting-deploy@v0  # Utilise l'action Firebase pour configurer Firebase CLI
         with:
-          # Utiliser 'repoToken' pour une authentification OAuth (si tu as configuré un token pour ton repo)
-          repoToken: ${{ secrets.GITHUB_TOKEN }}  # Le token de GitHub est utilisé ici pour authentifier le déploiement via GitHub Actions
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}  # Utiliser la clé de service Firebase pour l'authentification
 
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}  # Utilise ton token Firebase pour le déploiement
+        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}  # Utiliser ton token Firebase pour le déploiement
