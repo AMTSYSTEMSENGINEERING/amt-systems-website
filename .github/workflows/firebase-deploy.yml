@@ -5,6 +5,14 @@ permissions:
   contents: read
   pull-requests: write
 
+on:
+  push:
+    branches:
+      - production  # Déployer lorsque du code est poussé sur la branche production
+  pull_request:
+    branches:
+      - production  # Déployer lors des PR sur la branche production (optionnel mais utile)
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
