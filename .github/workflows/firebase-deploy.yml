@@ -8,36 +8,35 @@ permissions:
 on:
   push:
     branches:
-      - production  # Déployer lorsque du code est poussé sur la branche production
+      - production  # Déploiement quand push sur production
   pull_request:
     branches:
-      - production  # Déployer lors des PR sur la branche production (optionnel mais utile)
+      - production  # Optionnel : déploiement pour PR vers production
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Exécuter sur Ubuntu
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2  # Récupère le code source du dépôt
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2  # Configure l'environnement Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Définir la version de Node.js à utiliser (>= 20)
+          node-version: '20'
 
       - name: Install dependencies
-        run: npm install  # Installer les dépendances
+        run: npm install
 
       - name: Build the app
-        run: npm run build  # Construire l'application pour la production
+        run: npm run build
 
-      - name: Install Firebase CLI (with a stable version)
-        run: npm install -g firebase-tools@11.0.0  # Utiliser une version stable de Firebase CLI
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools@11.0.0
 
-      - name: Deploy to Firebase Hosting (using Firebase Extended Action)
+      - name: Deploy to Firebase Hosting (Production)
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}  # Utiliser la clé de service Firebase pour l'authentification
-          channelId: "preview-channel"  # Canal de prévisualisation
-          expires: "7d"  # Durée de validité du canal (facultatif, à ajuster selon les besoins)
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: amt-systems-website
