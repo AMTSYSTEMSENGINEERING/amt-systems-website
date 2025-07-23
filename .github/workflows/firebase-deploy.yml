@@ -1,17 +1,12 @@
-name: Firebase Deployment
+name: Firebase Production Deployment
 
 permissions:
-  checks: write
   contents: read
-  pull-requests: write
 
 on:
   push:
     branches:
-      - production
-  pull_request:
-    branches:
-      - production
+      - production  # Déploiement uniquement sur la branche production
 
 jobs:
   deploy:
@@ -21,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
