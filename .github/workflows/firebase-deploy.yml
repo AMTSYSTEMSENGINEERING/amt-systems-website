@@ -1,37 +1,43 @@
-name: Firebase Production Deployment
+name: Firebase Deployment
 
 permissions:
+  checks: write
   contents: read
+  pull-requests: write
 
 on:
   push:
     branches:
-      - production  # Déploiement uniquement sur la branche production
+      - production  # Déployer lorsque du code est poussé sur la branche production
+  pull_request:
+    branches:
+      - production  # Déployer lors des PR sur la branche production (optionnel mais utile)
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Exécuter sur Ubuntu
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2  # Récupère le code source du dépôt
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v2  # Configure l'environnement Node.js
         with:
-          node-version: '20'
+          node-version: '20'  # Définir la version de Node.js à utiliser (>= 20)
 
       - name: Install dependencies
-        run: npm install
+        run: npm install  # Installer les dépendances
 
       - name: Build the app
-        run: npm run build
+        run: npm run build  # Construire l'application pour la production
 
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools@11.0.0
+      - name: Install Firebase CLI (with a stable version)
+        run: npm install -g firebase-tools@11.0.0  # Utiliser une version stable de Firebase CLI
 
-      - name: Deploy to Firebase Hosting (Production)
+      - name: Deploy to Firebase Hosting (using Firebase Extended Action)
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          projectId: amt-systems-website
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}  # Utiliser la clé de service Firebase pour l'authentification
+          channelId: "preview-channel"  # Canal de prévisualisation
+          expires: "30d"  # Durée de validité du canal (facultatif, à ajuster selon les besoins)
