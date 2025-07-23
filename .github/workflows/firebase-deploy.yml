@@ -36,4 +36,5 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          projectId: amt-systems-website  # Remplace si différent
+          projectId: amt-systems-website
+          target: default  # facultatif, si tu as des targets dans firebase.json
