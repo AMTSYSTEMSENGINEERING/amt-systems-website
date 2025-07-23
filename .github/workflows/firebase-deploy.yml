@@ -8,10 +8,10 @@ permissions:
 on:
   push:
     branches:
-      - production  # Déploiement quand push sur production
+      - production
   pull_request:
     branches:
-      - production  # Optionnel : déploiement pour PR vers production
+      - production
 
 jobs:
   deploy:
