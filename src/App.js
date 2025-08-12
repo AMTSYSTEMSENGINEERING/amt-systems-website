@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
 import logo from './assets/log.png';
+import AboutSection from './components/AboutSection';
+import FloatingActionButton from './components/FloatingActionButton';
+import RecentsProjet from './components/RecentsProjet';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="txt">AMT Systems Engeneering</h1>
-      </header>
+    <div>
+      <FloatingActionButton />
+      <AboutSection />
+      <RecentsProjet />
     </div>
   );
 }
