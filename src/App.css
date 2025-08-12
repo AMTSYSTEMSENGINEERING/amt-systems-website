@@ -3,8 +3,24 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 70vmin;
+  z-index: 1;
   pointer-events: none;
+  border-radius: 100%;
+  background:
+    radial-gradient(white 1.5px, transparent 1.5px) 5px 8px,
+    radial-gradient(white 2px, transparent 2px) 30px 15px,
+    radial-gradient(white 1px, transparent 1px) 18px 35px,
+    radial-gradient(white 1.2px, transparent 1.2px) 25px 5px,
+    radial-gradient(white 1.8px, transparent 1.8px) 38px 12px,
+    radial-gradient(white 1px, transparent 1px) 40px 30px,
+    radial-gradient(white 2px, transparent 2px) 70px 10px,
+    radial-gradient(white 1px, transparent 1px) 100px 20px,
+    radial-gradient(white 1.8px, transparent 1.8px) 110px 5px,
+    radial-gradient(white 1.5px, transparent 1.5px) 130px 15px,
+    radial-gradient(white 1px, transparent 1px) 140px 40px,
+    radial-gradient(white 1.2px, transparent 1.2px) 160px 10px;
+  background-size: 170px 50px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
