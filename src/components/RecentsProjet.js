@@ -73,7 +73,7 @@ const ProjectsSection = () => {
               transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
-              <Card sx={{ maxWidth: 360, mx: 'auto' }}>
+              <Card sx={{ maxWidth: 345, mx: 'auto' }}>
                 <CardMedia
                   component="img"
                   height="180"

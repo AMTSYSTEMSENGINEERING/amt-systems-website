@@ -1,11 +1,18 @@
 import React from 'react';
-import { Box, Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Grid,
+  useTheme,
+  useMediaQuery
+} from '@mui/material';
 import { motion } from 'framer-motion';
-import service from '../assets/service.png'; // Assurez-vous que le chemin est correct
+import s1 from '../assets/service.png'; 
+import Button from '@mui/material/Button';
 
-const PresentationSection = () => {
+const ProjectsSection = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
 
   return (
     <Box
@@ -14,63 +21,37 @@ const PresentationSection = () => {
         px: { xs: 2, md: 6 },
       }}
     >
-      <Grid
-        container
-        spacing={4}
-        alignItems="center"
-        direction={isMobile ? 'row' : 'row'}
-        display="flex"
-        justifyContent="space-between"
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
       >
-        {/* Image à gauche */}
-        <Grid item xs={12} md={6}>
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <Box
-              component="img"
-              src={service} // Remplace par le bon chemin de ton image
-              alt="DS Teams"
-              sx={{
-                width: '100%',
-                borderRadius: 2,
-              }}
-            />
-          </motion.div>
-        </Grid>
+        <Typography variant="h5" fontWeight="bold" sx={{ color: '#0f387cff', mb: 2, textAlign: 'center' }}>
+          About Us
+        </Typography>
+      </motion.div>
 
-        {/* Texte à droite */}
-        <Grid item xs={6} md={4}>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <Typography variant="h5" fontWeight="bold" gutterBottom>
-              Présentation de DS TEAMS
-            </Typography>
-
-            <Typography variant="body1" sx={{ mb: 2 }}>
-              <strong>DS TEAMS</strong> est une société de services informatiques qui accompagne les entreprises dans leur transformation digitale. 
-              Nous combinons expertise technique, agilité et innovation pour concevoir des solutions performantes et évolutives.
-            </Typography>
-
-            <Typography variant="body1" sx={{ mb: 2 }}>
-              <strong>Notre mission :</strong> Offrir à nos clients des solutions technologiques <strong>fiables, innovantes et durables</strong>, en construisant une relation de <strong>confiance</strong> solide.
-            </Typography>
-
-            <Typography variant="body1">
-              <strong>Notre vision :</strong> Devenir un <strong>acteur de référence</strong> dans l’accélération digitale des entreprises, en les propulsant vers de nouveaux sommets grâce à la technologie.
-            </Typography>
-          </motion.div>
-        </Grid>
+      <Grid container spacing={4} justifyContent="center"  alignItems="center">
+          <Grid item xs={12} sm={6} md={4} >
+            <img src={s1} alt="Project" style={{ width: '90%', height: '100%' }} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} >
+             <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
+               AMT Systems Engineering
+             </Typography>
+              <Typography variant="body2" sx={{ mb: 5, maxWidth: 700, mx: 'auto' }}>
+                From brand development, website application development, eCommerce solutions,
+                Content Management Systems (CMS), Search Engine Optimization (SEO) and digital marketing.
+                Content Management Systems (CMS), Search Engine Optimization (SEO) and digital marketing.
+                Optimization (SEO) and digital marketing.
+              </Typography>
+              <Button variant="contained">Contained</Button>
+          </Grid>
+       
       </Grid>
     </Box>
   );
 };
 
-export default PresentationSection;
+export default ProjectsSection;
