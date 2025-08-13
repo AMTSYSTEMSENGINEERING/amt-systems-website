@@ -1,21 +1,17 @@
-import React from 'react';
-import './App.css';
-import logo from './assets/log.png';
-import AboutSection from './components/AboutSection';
-import FloatingActionButton from './components/FloatingActionButton';
-import RecentsProjet from './components/RecentsProjet';
-import ServiceSolution from './components/ServiceSolution';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from './pages/HomePage';
+import Header from './components/NavBar';
+import Footer from './components/Footer';
 
-
-function App() {
-  return (
-    <div>
-      <FloatingActionButton />
-      <AboutSection />
-      <RecentsProjet />
-      <ServiceSolution />
-     </div>
-  );
-}
+const App = () => (
+  <BrowserRouter>
+    <Header />
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+    </Routes>
+    <Footer />
+  </BrowserRouter>
+);
 
 export default App;
