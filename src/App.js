@@ -6,6 +6,7 @@ import FloatingActionButton from './components/FloatingActionButton';
 import RecentsProjet from './components/RecentsProjet';
 import ServiceSolution from './components/ServiceSolution';
 
+
 function App() {
   return (
     <div>
@@ -13,7 +14,7 @@ function App() {
       <AboutSection />
       <RecentsProjet />
       <ServiceSolution />
-    </div>
+     </div>
   );
 }
 
