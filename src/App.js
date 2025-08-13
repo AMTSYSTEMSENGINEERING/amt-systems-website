@@ -1,13 +1,20 @@
 import React from 'react';
 import './App.css';
 import logo from './assets/log.png';
-import HomeCard from './components/HomeCard';
+import AboutSection from './components/AboutSection';
+import FloatingActionButton from './components/FloatingActionButton';
+import RecentsProjet from './components/RecentsProjet';
+import ServiceSolution from './components/ServiceSolution';
+
 
 function App() {
   return (
     <div>
-      <HomeCard/>
-    </div>
+      <FloatingActionButton />
+      <AboutSection />
+      <RecentsProjet />
+      <ServiceSolution />
+     </div>
   );
 }
 
