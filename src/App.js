@@ -1,50 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+
+// Composants réutilisables
 import { NavBar, ServicesGrid, Footer } from "./components";
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code>system to test the hot reloading feature.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+// Page Avis
+import ReviewsPage from "./pages/ReviewsPage";
 
-function App() {
-  const navbarData = {
-    logo: { src: "/logo192.png", alt: "AMT Systems Engineering" },
-    nav: [
-      { label: "Home", href: "#" },
-      { label: "About Us", href: "#" },
-      {
-        label: "Services",
-        items: [
-          { label: "Website Creation", href: "#" },
-          { label: "Custom Website Development", href: "#" },
-          { label: "Web Portal Development", href: "#" },
-          { label: "Software Development", href: "#" },
-        ],
-      },
-      { label: "Blog", items: [{ label: "Latest", href: "#" }] },
-      { label: "Contact", href: "#" },
-    ],
-    languages: { current: "Français", options: ["English", "Français"], onSelect: (lng) => console.log(lng) },
-  };
-
+function HomePage() {
   const services = [
     {
       icon: "🖥️",
@@ -68,6 +33,36 @@ function App() {
       href: "#",
     },
   ];
+
+  return <ServicesGrid services={services} />;
+}
+
+export default function App() {
+  const navbarData = {
+    logo: { src: "/logo192.png", alt: "AMT Systems Engineering" },
+    nav: [
+      { label: "Home", href: "/" },
+      { label: "About Us", href: "#" },
+      {
+        label: "Services",
+        items: [
+          { label: "Website Creation", href: "#" },
+          { label: "Custom Website Development", href: "#" },
+          { label: "Web Portal Development", href: "#" },
+          { label: "Software Development", href: "#" },
+        ],
+      },
+      { label: "Blog", items: [{ label: "Latest", href: "#" }] },
+      { label: "Contact", href: "#" },
+      // 🔥 Nouveau lien vers la page d’avis
+      { label: "Reviews", href: "/reviews" },
+    ],
+    languages: {
+      current: "Français",
+      options: ["English", "Français"],
+      onSelect: (lng) => console.log(lng),
+    },
+  };
 
   const footerData = {
     logo: { src: "/logo192.png", alt: "AMT Systems Engineering" },
@@ -101,7 +96,12 @@ function App() {
         ],
       },
     ],
-    contact: { city: "Douala", country: "Cameroon", phone: "+237 6 98 98 74 85", email: "amtsystemsengineering@gmail.com" },
+    contact: {
+      city: "Douala",
+      country: "Cameroon",
+      phone: "+237 6 98 98 74 85",
+      email: "amtsystemsengineering@gmail.com",
+    },
     socials: [
       { label: "Facebook", href: "#" },
       { label: "Instagram", href: "#" },
@@ -112,12 +112,17 @@ function App() {
   };
 
   return (
-    <div className="page">
-      <NavBar {...navbarData} />
-      <ServicesGrid services={services} />
-      <Footer {...footerData} />
-    </div>
+    <BrowserRouter>
+      <div className="page">
+        <NavBar {...navbarData} />
+
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/reviews" element={<ReviewsPage />} />
+        </Routes>
+
+        <Footer {...footerData} />
+      </div>
+    </BrowserRouter>
   );
 }
-
-export default App;
