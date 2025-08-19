@@ -19,7 +19,7 @@ const HeroSection = () => {
         py: 8,
         background: 'linear-gradient(to right, #0d1b2a, #1b263b)',
         color: '#fff',
-        height: '50vh',
+        height: '70vh',
       }}
     >
       <motion.div
