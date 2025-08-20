@@ -13,6 +13,8 @@ const App = () => (
     <Header />
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/" element={ <Contact/> } />
+   <Route path="/" element={ <AvisSlider/>} />
     </Routes>
     <Footer />
   </BrowserRouter>
