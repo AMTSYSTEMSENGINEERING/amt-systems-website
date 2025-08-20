@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import { NavBar, ServicesGrid, Footer } from "./components";
+import Contact from './contact/contact'
 
 // function App() {
 //   return (
@@ -111,6 +112,7 @@ function App() {
   return (
     <div className="page">
       <NavBar {...navbarData} />
+        <Contact/> 
       <ServicesGrid services={services} />
       <Footer {...footerData} />
     </div>
