@@ -15,7 +15,6 @@ function App() {
       <RecentsProjet />
       <ServiceSolution />
       <FloatingActionButton />
-
      </div>
   );
 }

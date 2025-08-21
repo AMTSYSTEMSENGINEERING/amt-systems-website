@@ -17,7 +17,7 @@ const HeroSection = () => {
         justifyContent: 'space-evenly',
         px: 4,
         py: 8,
-        background: 'linear-gradient(to right, #0d1b2a, #1b263b)',
+        background: 'linear-gradient(to right,#333366, #0d1b2a)',
         color: '#fff',
         height: '70vh',
       }}
