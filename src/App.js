@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import AvisPage from "./pages/AvisPage";
 import ServicesPage from "./pages/ServicesPage";
 import CursorAnimation from "./components/CustumPointer";
+import ContactPage from "./pages/ContactPage";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/reviews" element={<AvisPage />} />
         </Routes>
         <Footer {...footerData} />

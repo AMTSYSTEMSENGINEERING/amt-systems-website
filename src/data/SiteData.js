@@ -1,20 +1,11 @@
+
 // données de barre de navigation (header)
 export const navbarData = {
   logo: { src: "/logo192.png", alt: "AMT Systems Engineering" },
   nav: [
     { label: "Home", href: "/" },
-    { label: "About Us", href: "#" },
-    {
-      label: "Services",
-      items: [
-        { label: "Website Creation", href: "/services" },
-        { label: "Custom Website Development", href: "#" },
-        { label: "Web Portal Development", href: "#" },
-        { label: "Software Development", href: "#" },
-      ],
-    },
-    { label: "Blog", items: [{ label: "Latest", href: "#" }] },
-    { label: "Contact", href: "#" },
+    { label: "Services", href: "/services" },
+    { label: "Contact", href: "/contact" },
     { label: "Reviews", href: "/reviews" }, // 🔥 page d’avis
   ],
   languages: {

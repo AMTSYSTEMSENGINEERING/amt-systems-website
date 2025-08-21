@@ -24,6 +24,14 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+ /* CSS for the App component */
+ .outlined-text {
+  font-size: 70px;         
+  font-weight: bold;       
+  color: transparent;       
+  -webkit-text-stroke: 2px white; 
+  font-family: Arial, sans-serif;
+}
 
 .App-header {
   background-color: white;
