@@ -13,7 +13,7 @@ const ContactPage = (props) => {
     page: "contact"
   }
     return (
-      <div style={{backgroundColor:"#0A1633"}}>
+      <div>
           <HomeCard homeData={homeData}/>
           <SocialMedia/>
           <From/>

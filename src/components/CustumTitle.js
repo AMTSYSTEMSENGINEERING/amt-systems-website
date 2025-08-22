@@ -8,10 +8,10 @@ const gradientStyle = {
   WebkitTextFillColor: "transparent"
 };
 
-const CustumTitle = ({text}) =>{
+const CustumTitle = ({title}) =>{
     return(
-       <Typography variant="h4" fontWeight="bold" gutterBottom sx={gradientStyle}>
-            {text}
+       <Typography variant="h4" fontWeight="bold" textAlign="center" paddingTop={10} gutterBottom sx={gradientStyle}>
+            {title}
        </Typography>
     )
 }

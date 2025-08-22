@@ -1,57 +1,34 @@
 import React from "react";
-import { Container, Grid, Typography, Box } from "@mui/material";
-import TeamworkIcon from "@mui/icons-material/Groups";
-import HandshakeIcon from "@mui/icons-material/Handshake";
-import { motion } from "framer-motion";
-import CustumTitle from "../CustumTitle";
+import { Box, TextField, Button, Paper } from "@mui/material";
 import TabSocialMedia from "./TabSocialMedia.components"
 import img1 from "../../assets/contact_spire.svg";
+import { motion } from "framer-motion";
+import CustumTitle from '../CustumTitle';
 
-const AboutUs = () => {
+const ContactPage = () => {
+  const title="Let's stay in contact";
   return (
-    <Container sx={{ py: 10, textAlign: "center" }}>
-       <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
+    <div>
+        <CustumTitle title={title} />
+    <Box display="flex" flexDirection={{ xs: "column", md: "row" }} justifyContent="center"  gap={4} p={2}>
       
-          <CustumTitle text="Restons en contact"/>
-  
-      </motion.div>
-
-      
-      <Grid container spacing={5} alignItems="center">
-      
-        <Grid item xs={12} md={6} textAlign="left">
-        <motion.div
-                initial={{ opacity: 0, x: -100 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-            Rejoiner nous sur
+      <Box alignContent="center" justifyItems="center" alignItems="center" sx={{ width: { xs: "100%", md: "50%" }, height: "auto", overflow: "hidden", borderRadius: 2 }}>
             <TabSocialMedia/>
-          </motion.div>
-        </Grid>
-       
-        <Grid item xs={12} md={6} textAlign="center">
-          <motion.div
+      </Box>
+
+      <Box p={3} width={{ xs: "100%", md: "40%" }} borderRadius={2} bgcolor="transparent">
+           <motion.div
                         initial={{ opacity: 0, x: 100 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                         viewport={{ once: true }}
                       >
                  <img style={{width:'100%' , height:'300px'}} src={img1}/>
-               </motion.div>      
-        </Grid>   
-      </Grid>
-      
-
-
-    </Container>
+               </motion.div> 
+      </Box>
+    </Box>
+    </div>
   );
 };
 
-export default AboutUs;
+export default ContactPage;
