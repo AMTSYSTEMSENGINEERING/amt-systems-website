@@ -17,7 +17,7 @@ export default function App() {
   const navbarData = {
     logo: { src: "/logo192.png", alt: "AMT Systems Engineering" },
     nav: [
-      { label: "Home", href: "/" },              
+      { label: "Home", href: "/" },             
       { label: "About Us", href: "/about" },
       { label: "Services", href: "/services" },
       { label: "Blog", href: "/blog" },
@@ -80,7 +80,7 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/reviews" element={<ReviewsPage />} />
+          <Route path="/reviews" element={<ReviewsPage />} /> 
         </Routes>
 
         <Footer {...footerData} />
