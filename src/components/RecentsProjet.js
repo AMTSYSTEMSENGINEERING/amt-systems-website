@@ -39,7 +39,7 @@ const ProjectsSection = () => {
       sx={{
         py: 8,
         px: { xs: 2, md: 6 },
-        backgroundColor: '#003366',
+        backgroundColor: '#333366',
         color: 'white',
         textAlign: 'center',
       }}
