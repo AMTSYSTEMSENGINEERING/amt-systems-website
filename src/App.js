@@ -1,67 +1,30 @@
-// App.js
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Composants réutilisables
-import { NavBar, ServicesGrid, Footer } from "./components";
+// Layout commun
+import { NavBar, Footer } from "./components";
 
-// Page Avis
-import ReviewsPage from "./pages/ReviewsPage";
-
-function HomePage() {
-  const services = [
-    {
-      icon: "🖥️",
-      title: "Web & Mobile app",
-      description:
-        "If your site isn’t mobile-friendly or responsive, you're missing key traffic. We provide responsive web design and mobile app development services.",
-      href: "#",
-    },
-    {
-      icon: "📈",
-      title: "SEO & Digital Marketing",
-      description:
-        "If you need to connect with your target audience, we have the digital marketing package for you! We deliver winning campaigns that integrate full SEO and PPC strategies.",
-      href: "#",
-    },
-    {
-      icon: "🛍️",
-      title: "E-Commerce Platforms",
-      description:
-        "We're ready to create a cutting-edge, high performance, fully secure e-Commerce website for your business.",
-      href: "#",
-    },
-  ];
-
-  return <ServicesGrid services={services} />;
-}
+// Pages
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
+import ReviewsPage from "./pages/ReviewsPage"; 
 
 export default function App() {
   const navbarData = {
     logo: { src: "/logo192.png", alt: "AMT Systems Engineering" },
     nav: [
-      { label: "Home", href: "/" },
-      { label: "About Us", href: "#" },
-      {
-        label: "Services",
-        items: [
-          { label: "Website Creation", href: "#" },
-          { label: "Custom Website Development", href: "#" },
-          { label: "Web Portal Development", href: "#" },
-          { label: "Software Development", href: "#" },
-        ],
-      },
-      { label: "Blog", items: [{ label: "Latest", href: "#" }] },
-      { label: "Contact", href: "#" },
-      // 🔥 Nouveau lien vers la page d’avis
-      { label: "Reviews", href: "/reviews" },
+      { label: "Home", href: "/" },              
+      { label: "About Us", href: "/about" },
+      { label: "Services", href: "/services" },
+      { label: "Blog", href: "/blog" },
+      { label: "Contact", href: "/contact" },
+      { label: "Reviews", href: "/reviews" },  
     ],
-    languages: {
-      current: "Français",
-      options: ["English", "Français"],
-      onSelect: (lng) => console.log(lng),
-    },
+    languages: { current: "Français", options: ["English", "Français"], onSelect: (lng) => console.log(lng) },
   };
 
   const footerData = {
@@ -96,12 +59,7 @@ export default function App() {
         ],
       },
     ],
-    contact: {
-      city: "Douala",
-      country: "Cameroon",
-      phone: "+237 6 98 98 74 85",
-      email: "amtsystemsengineering@gmail.com",
-    },
+    contact: { city: "Douala", country: "Cameroon", phone: "+237 6 98 98 74 85", email: "amtsystemsengineering@gmail.com" },
     socials: [
       { label: "Facebook", href: "#" },
       { label: "Instagram", href: "#" },
@@ -117,7 +75,11 @@ export default function App() {
         <NavBar {...navbarData} />
 
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/reviews" element={<ReviewsPage />} />
         </Routes>
 
