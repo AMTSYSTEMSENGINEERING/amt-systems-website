@@ -1,89 +1,113 @@
-import React from 'react';
-import {
-  Box,
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-} from '@mui/material';
-import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
-import LoopIcon from '@mui/icons-material/Loop';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import { styled } from '@mui/system';
-import s1 from '../../assets/service.png'; 
-import { motion } from 'framer-motion';
-import CustumTitle from '../CustumTitle';
-import '../../App.css';
-// Values data
-const values = [
-  {
-    icon: <EmojiEmotionsIcon fontSize="large" />,
-    title: 'Customer satisfaction',
-    description: 'Delivering products is important, but excellence means more than just fulfilling the explicit needs of our customers',
-  },
-  {
-    icon: <LoopIcon fontSize="large" />,
-    title: 'Agile',
-    description:
-      'To achieve this, AMT systems-Engineering SARL remains attentive to the real challenges the customer face in their ecosystem.',
-  },
-  {
-    icon: <BarChartIcon fontSize="large" />,
-    title: 'Innovation',
-    description:
-      'We are committed to being open and honest with you at all times',
-  },
-  {
-    icon: <CheckCircleOutlineIcon fontSize="large" />,
-    title: 'Integrity',
-    description:
-      'We are dedicated to integrity and practice responsible resource management',
-  },
+import React from "react";
+import { Grid, Box, Typography } from "@mui/material";
+import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
+import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
+import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import InsightsIcon from "@mui/icons-material/Insights";
+import { motion } from "framer-motion";
+
+const services1 = [
+  { title: "Delivering products", icon: <DeveloperModeIcon style={{fontSize:'50px',color:"#0A1633"}} />, description: "Delivering products is important, but excellence means more than just fulfilling the explicit needs of our customers. " },
+  { title: "Innovations", icon: <HeadsetMicIcon style={{fontSize:'50px',color:"#0A1633"}} />, description: "Creating sustainabale value requests more than technical resolution of the challenges. " },
 ];
 
-const OurValues = () => {
+const services2 = [
+  { title: "projet Management ", icon: <BusinessCenterIcon style={{fontSize:'50px',color:"#0A1633"}} />, description: "To achieve this, AMT systems-Engineering SARL remains attentive to the real challenges the customer face in their ecosystem." },
+  { title: "Conseil IT", icon: <InsightsIcon style={{fontSize:'50px',color:"#0A1633"}} />, description: "This customer-centric and user-focused approach prioritizes exceptional customer service by delivering tailored solutions that meet all stakeholders' needs." },
+];
+
+const gradientStyle = {
+  background: "linear-gradient(90deg,rgb(102, 188, 70),rgb(65, 66, 141),red)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent"
+};
+
+const StarGrid = () => {
   return (
-    <Box sx={{ px: { xs: 2, md: 8 }, py: 6 }}>
-       <p className='title-text-color'>Our advenatges</p>
+    <Box sx={{ textAlign: "center", p: 5 }}>
+      <p className='title-text-color'>AMT Systems –Engineering SARLs</p>
+      <h2>Why to choose  AMT Systems –Engineering SARL  as your business partner?</h2>
+      <br></br>
+      <br></br>
+      <br></br>
+      <Box display="flex" flexDirection={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" gap={4} p={2}>
+        {services1.map((service, index) => (
+          
+          <Box
+            p={3} width="100%" borderRadius={2} bgcolor="transparent"
+            key={index}
+            sx={{
+              p: 3,
+              backgroundColor: "white",
+              textAlign: "center",
+              position: "relative",
+              borderBottom: index < 2 ? "2px solid #0A1633" : "none",
+              borderRadius:"20px",
+              borderTop: index >= 2 ? "2px solid #0A1633" : "none",
+              borderRight: index % 2 === 0 ? "2px solid #0A1633" : "none",
+              borderLeft: index % 2 !== 0 ? "2px solid #0A1633" : "none",
+             
+              
+            }}
+          >
+            <motion.div
+                          initial={{ opacity: 0, x: -100 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.9 }}
+                          viewport={{ once: true }}
+                        >
+            <Box sx={{ color: "#6c63ff", mb: 1 }}>{service.icon}</Box>
+            <Typography variant="h6" fontWeight="bold" sx={{ color: "#0A1633" }}>
+              {service.title}
+            </Typography>
+            <Typography variant="h6" color="textSecondary">
+              {service.description}
+            </Typography>
+            </motion.div>
+          </Box> 
+        ))}
+      </Box>
 
-      <Box display="flex" flexDirection={{ xs: "column", md: "row" }} justifyContent="center"  gap={4} p={2}>
-        {/* Left Illustration */}
-        
-        <Box alignContent="center"textAlign="center" sx={{ width: { xs: "5%", md: "50%" }, height: "auto", overflow: "hidden", borderRadius: 2 }}>
-          <motion.div
-                        initial={{ opacity: 0, x: 100 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1.5, delay: 0.2 }}
-                        viewport={{ once: true }}
-                      >
-              <h1>Why to choose  AMT Systems –Engineering SARL  as your business partner?</h1>
-          </motion.div>
-        </Box>
-
-        {/* Right Cards */}
-        <Box p={3} width={{ xs: "100%", md: "40%" }} borderRadius={2} bgcolor="transparent">
-          <Grid container spacing={3}>
-            {values.map((value, index) => (
-              <Grid item xs={12} sm={6} key={index}>
-                <Card sx={{ height: '100%', boxShadow: 3, borderRadius: 3 }}>
-                  <CardContent sx={{ textAlign: 'center' }}>
-                    <Box mb={1}>{value.icon}</Box>
-                    <Typography variant="h6" fontWeight="bold" gutterBottom>
-                      {value.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {value.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
+       <Box display="flex" flexDirection={{ xs: "column", md: "row" }} justifyContent="center" alignItems="center" gap={4} p={2}>
+        {services2.map((service, index) => (
+          
+          <Box
+            p={3} width="100%" borderRadius={2} bgcolor="transparent"
+            key={index}
+            sx={{
+              p: 3,
+              backgroundColor: "white",
+              textAlign: "center",
+              position: "relative",
+              borderBottom: index < 2 ? "2px solid #0A1633" : "none",
+              borderRadius:"20px",
+              borderTop: index >= 2 ? "2px solid #0A1633" : "none",
+              borderRight: index % 2 === 0 ? "2px solid #0A1633" : "none",
+              borderLeft: index % 2 !== 0 ? "2px solid #0A1633" : "none",
+             
+              
+            }}
+          >
+            <motion.div
+                          initial={{ opacity: 0, x: -100 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.9 }}
+                          viewport={{ once: true }}
+                        >
+            <Box sx={{ color: "#6c63ff", mb: 1 }}>{service.icon}</Box>
+            <Typography variant="h6" fontWeight="bold" sx={{ color: "#0A1633" }}>
+              {service.title}
+            </Typography>
+            <Typography variant="h6" color="textSecondary">
+              {service.description}
+            </Typography>
+            </motion.div>
+          </Box> 
+        ))}
       </Box>
     </Box>
+    
   );
 };
 
-export default OurValues;
+export default StarGrid;

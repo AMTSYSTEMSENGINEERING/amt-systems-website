@@ -15,7 +15,7 @@ const AboutUs = (props) => {
     return (
       <div>
           <HomeCard homeData={homeData}/>
-     
+          <Aboutus />
           <Team />
     </div>
      
