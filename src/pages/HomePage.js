@@ -5,6 +5,8 @@ import FloatingActionButton from '../components/FloatingActionButton';
 import RecentsProjet from '../components/RecentsProjet';
 import ServiceSolution from '../components/ServiceSolution';
 import HomeCard from '../components/HomeCard';
+import Contact from '../components/contact/contact';
+import AvisSlider from '../components/avis/avis';
 
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
       <AboutSection />
       <RecentsProjet />
       <ServiceSolution />
+      
+      <Contact/>
       <FloatingActionButton />
 
      </div>
