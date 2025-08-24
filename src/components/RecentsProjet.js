@@ -47,12 +47,12 @@ const ProjectsSection = () => {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 1.5 }}
         viewport={{ once: true }}
       >
-        <Typography variant="subtitle2" sx={{ color: '#A0C4FF', mb: 1 }}>
+        <p className='title-text-white' style={{ marginBottom: isMobile ? 20 : 40 }}>
           PROJETS RECENTS
-        </Typography>
+        </p>
 
         <Typography variant="h5" fontWeight="bold" sx={{ mb: 2 }}>
           A skilled team of experts with a focus on transforming local needs into smart solutions

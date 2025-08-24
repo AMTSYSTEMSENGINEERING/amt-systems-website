@@ -1,12 +1,14 @@
+import { label } from "motion/react-client";
 
 // données de barre de navigation (header)
 export const navbarData = {
   logo: { src: "/logo192.png", alt: "AMT Systems Engineering" },
   nav: [
     { label: "Home", href: "/" },
+    {label: "About Us", href: "/aboutus" },
     { label: "Services", href: "/services" },
     { label: "Contact", href: "/contact" },
-    { label: "Reviews", href: "/reviews" }, // 🔥 page d’avis
+    { label: "Reviews", href: "/reviews" }, 
   ],
   languages: {
     current: "Français",
@@ -67,23 +69,23 @@ export const footerData = {
  export const services = [
     {
       icon: "🖥️",
-      title: "Web & Mobile app",
+      title: "IT Solutions and Data Services",
       description:
-        "If your site isn’t mobile-friendly or responsive, you're missing key traffic. We provide responsive web design and mobile app development services.",
+        "The  Services performed by AMT Systems- Engineering SARL  offer high-quality financial solutions by: Designing Web platforms and Mobile Applications for Optimal Performance. Creating Visual Identities and Branding Solutions. Collecting, Analyzing Data and deriving strategic Insights for your business. All tailored to fit the unique needs of your business.",
       href: "#",
     },
     {
       icon: "📈",
-      title: "SEO & Digital Marketing",
+      title: "Systems-Engineering and Prototyping",
       description:
-        "If you need to connect with your target audience, we have the digital marketing package for you! We deliver winning campaigns that integrate full SEO and PPC strategies.",
+        "Many business partners face unique challenges requiring tailored solutions. AMT Systems Engineering SARL works closely with customers to develop local, highly customized solutions addressing their specific needs. Our services include :systems engineering mechanical and electronic designrapid prototyping All those supported by expertise in advanced engineering methods and simulation techniques",
       href: "#",
     },
     {
       icon: "🛍️",
-      title: "E-Commerce Platforms",
+      title: "Technical, industrial procurement and supplies",
       description:
-        "We're ready to create a cutting-edge, high performance, fully secure e-Commerce website for your business.",
+        "As Companies and institutions increasingly focus on core competencies. The demand for outsourcing secondary activities like spare part procurement continues to rise. AMT Systems Engineering SARL offers these services to its customers. Connecting our business partners with potential suppliers or managing supplies on their behalf is a key aspect of our operations",
       href: "#",
     },
   ];

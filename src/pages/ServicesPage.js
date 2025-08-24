@@ -2,6 +2,7 @@ import React from "react";
 import ServicesGrid from "../components/ServicesGrid";
 import { services } from "../data/SiteData";
 import HomeCard from "../components/HomeCard";
+import WhyChoose from "../components/WhyChoose";
 
 export default function HomePage() {
   const homeData = {
@@ -16,6 +17,7 @@ export default function HomePage() {
     <div>
       <HomeCard homeData={homeData}/>
       <ServicesGrid services={services} /> 
+      <WhyChoose />
     </div>
   )
 }
