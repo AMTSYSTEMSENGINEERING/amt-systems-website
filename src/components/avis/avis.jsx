@@ -141,7 +141,7 @@ function AvisSlider() {
     return (
         
         <div className="bg-blue-800 p-7 avis_slider">
-            <h2 className="flex flex-col items-center justify-center text-white text-2xl font-bold mt-2.5 mb-5.5">
+            <h2 className="flex">
                 What our client are saying?
             </h2>
             <p className="flex flex-col items-center justify-center text-white mb-3.5">
