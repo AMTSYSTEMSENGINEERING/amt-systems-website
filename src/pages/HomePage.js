@@ -6,7 +6,7 @@ import RecentsProjet from '../components/RecentsProjet';
 import ServiceSolution from '../components/ServiceSolution';
 import HomeCard from '../components/HomeCard';
 
-import Contact from '../components/contact/contact';
+
 
 
 
@@ -29,7 +29,7 @@ function App() {
       <RecentsProjet />
       <ServiceSolution />
       
-      <Contact/>
+
       <FloatingActionButton />
      </div>
   );

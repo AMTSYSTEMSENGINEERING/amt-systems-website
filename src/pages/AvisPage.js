@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import ReviewForm from "../components/ReviewForm";
 import ReviewCard from "../components/ReviewCard";
 import RatingStars from "../components/RatingStars";
+import Avis from "../components/avis/Avis";
 
 const LS_KEY = "amt-reviews";
 
@@ -41,6 +42,7 @@ export default function ReviewsPage() {
   }, [reviews, sort, filter]);
 
   return (
+    <div>
     <main className="reviews-page">
       <section className="rp__hero">
         <h1>Vos avis comptent</h1>
@@ -81,5 +83,7 @@ export default function ReviewsPage() {
         </div>
       </section>
     </main>
+       <Avis/>
+       </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import RatingStars from "./RatingStars";
 
+
 export default function ReviewForm({ onSubmit }) {
   const [form, setForm] = useState({ name: "", email: "", rating: 0, title: "", message: "" });
   const [errors, setErrors] = useState({});
@@ -23,8 +24,10 @@ export default function ReviewForm({ onSubmit }) {
   };
 
   return (
+    <div> 
     <form className="rform" onSubmit={handleSubmit} noValidate>
       <div className="rform__row">
+        
         <label className="rform__label">Votre note</label>
         <div>
           <RatingStars value={form.rating} onChange={(n) => setForm((f) => ({ ...f, rating: n }))} />
@@ -57,6 +60,8 @@ export default function ReviewForm({ onSubmit }) {
       <div className="rform__actions">
         <button className="btn btn--primary" type="submit">Publier l'avis</button>
       </div>
+     
     </form>
+    </div>
   );
 }

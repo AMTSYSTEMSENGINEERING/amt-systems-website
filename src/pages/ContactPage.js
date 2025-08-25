@@ -1,4 +1,5 @@
 import React from 'react';
+import Ccontact from '../components/contact/Ccontact';
 
 
 import HomeCard from "../components/HomeCard";
@@ -15,7 +16,7 @@ const ContactPage = (props) => {
     return (
       <div>
           <HomeCard homeData={homeData}/>
-          
+          <Ccontact/>
           
     </div>
      
