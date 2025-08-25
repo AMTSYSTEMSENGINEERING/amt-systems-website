@@ -3,13 +3,15 @@ import "./avis.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { motion } from 'framer-motion'; 
+
 
 function AvisSlider() {
     const [seeAll, setSeeAll] = useState(false);
 
     const user = [
         {
-            media: <a href="#"><img className="rounded-md"style={{borderRadius:'50px',}} src="/twitter.png" alt="media" /></a>,
+            media: <a href="#"><img  src="/twitter.png" alt="media" className="avis-media" /></a>,
             name: "Fa",
             pseudo: "@victofetanmi",
             avatar: "https://i.pravatar.cc/150?img=1",
@@ -17,7 +19,7 @@ function AvisSlider() {
 
         },
         {
-            media: <a href="#"><img className="rounded-md" src="/twitter.png" alt="media" /></a>,
+            media: <a href="#"><img  src="/twitter.png" alt="media"className="avis-media" /></a>,
             name: "Teffy Billion Dollars",
             pseudo: "@Jegc_tola",
             avatar: "https://i.pravatar.cc/150?img=1",
@@ -25,7 +27,7 @@ function AvisSlider() {
 
         },
         {
-            media: <a href="#"><img className="rounded-md " src="/twitter.png" alt="media" /></a>,
+            media: <a href="#"><img  src="/face.png" alt="media" className="avis-media"/></a>,
             name: "##",
             pseudo: "@TheFisola",
             avatar: "https://i.pravatar.cc/150?img=1",
@@ -33,7 +35,7 @@ function AvisSlider() {
 
         },
         {
-            media: <a href="#"><img className="rounded-md" src="/twitter.png" alt="media" /></a>,
+            media: <a href="#"><img  src="/insta.png" alt="media" className="avis-media"/></a>,
             name: "THEE AWAZI",
             pseudo: "@THEAWAZY",
             avatar: "https://i.pravatar.cc/150?img=1",
@@ -41,7 +43,7 @@ function AvisSlider() {
 
         },
         {
-            media: <a href="#"><img className="rounded-md" src="/twitter.png" alt="media" /></a>,
+            media: <a href="#"><img src="/insta.png" alt="media" className="avis-media"/></a>,
             name: "Temz",
             pseudo: "@TheRealTemz",
             avatar: "https://i.pravatar.cc/150?img=1",
@@ -49,7 +51,7 @@ function AvisSlider() {
 
         },
         {
-            media: <a href="#"><img className="rounded-md" src="/twitter.png" alt="media" /></a>,
+            media: <a href="#"><img  src="/twitter.png" alt="media" className="avis-media"/></a>,
             name: "Wine",
             pseudo: "@RedWinee",
             avatar: "https://i.pravatar.cc/150?img=1",
@@ -57,7 +59,7 @@ function AvisSlider() {
 
         },
         {
-            media: <a href="#"><img className="rounded-md" src="/twitter.png" alt="media" /></a>,
+            media: <a href="#"><img  src="/twitter.png" alt="media" className="avis-media"/></a>,
             name: "Fa",
             pseudo: "@victofetanmi",
             avatar: "https://i.pravatar.cc/150?img=1",
@@ -65,7 +67,7 @@ function AvisSlider() {
 
         },
         {
-            media: <a href="#"><img className="rounded-md" src="/twitter.png" alt="media" /></a>,
+            media: <a href="#"><img src="/face.png" alt="media" className="avis-media" /></a>,
             name: "Fa",
             pseudo: "@victofetanmi",
             avatar: "https://i.pravatar.cc/150?img=1",
@@ -73,7 +75,7 @@ function AvisSlider() {
 
         },
         {
-            media: <a href="#"><img className="rounded-md" src="/twitter.png" alt="media" /></a>,
+            media: <a href="#"><img src="/twitter.png" alt="media" className="avis-media" /></a>,
             name: "Fa",
             pseudo: "@victofetanmi",
             avatar: "https://i.pravatar.cc/150?img=1",
@@ -81,7 +83,7 @@ function AvisSlider() {
 
         },
         {
-            media: <a href="#"><img className="rounded-md" src="/twitter.png" alt="media" /></a>,
+            media: <a href="#"><img  src="/insta.png" alt="media"className="avis-media" /></a>,
             name: "Fa",
             pseudo: "@victofetanmi",
             avatar: "https://i.pravatar.cc/150?img=1",
@@ -89,7 +91,7 @@ function AvisSlider() {
 
         },
         {
-            media: <a href="#"><img className="rounded-md" src="/twitter.png" alt="media" /></a>,
+            media: <a href="#"><img  src="/insta.png" alt="media" className="avis-media" /></a>,
             name: "Fa",
             pseudo: "@victofetanmi",
             avatar: "https://i.pravatar.cc/150?img=1",
@@ -97,7 +99,7 @@ function AvisSlider() {
 
         },
         {
-            media: <a href="#"><img className="rounded-md" src="/twitter.png" alt="media" /></a>,
+            media: <a href="#"><img  src="/twitter.png" alt="media" className="avis-media"/></a>,
             name: "Fa",
             pseudo: "@victofetanmi",
             avatar: "https://i.pravatar.cc/150?img=1",
@@ -138,61 +140,74 @@ function AvisSlider() {
         ]
     };
 
-    return (
-        
-        <div className="bg-blue-800 p-7 avis_slider">
-            <h2 className="flex flex-col items-center justify-center text-white text-2xl font-bold mt-2.5 mb-5.5">
-                What our client are saying?
-            </h2>
-            <p className="flex flex-col items-center justify-center text-white mb-3.5">
-                We understand that if you are making money you will re-invest in your company
-            </p>
-            <div className="w-3/4 m-auto">
-                {!seeAll ? (
-                    <Slider {...settings} className="display-flex">
-                        {user.map((u, index) => (
-                            <div key={index} className="bg-white p-4 m-2 rounded-lg shadow-lg  w-auto max-w-sm break-words block">
-                                <div className="flex items-center gap-3 mb-2 div2">
-                                    <img src={u.avatar} alt={u.name} className="rounded-full w-10  avatar" />
-                                    <div className="w-full max-w-sm break-words">
-                                        <h3 className="font-semibold w-full max-w-full  breack-words text-sm,text-xs   ">{u.name}</h3>
-                                        <p className="avis-pseudo text-sm text-gray-500  breack-words text-sm,text-xs " >{u.pseudo}</p>
-                                    </div>
-                                    <div className="w-10  ">{u.media}</div>
-                                </div>
-                                <p className="avis-text">{u.text}</p>
-                            </div>
-                        ))}
-                    </Slider>
-                ) : ( 
-                    <div className="flex flex-wrap justify-center gap-4 w-4/4">
-                        {user.map((u, index) => (
-                            <div key={index} className="bg-white p-4 m-2 rounded-lg shadow-lg avis-card w-60 display-flex ">
-                                <div className="flex items-center gap-3 mb-2 ">
-                                    <img src={u.avatar} alt={u.name} className="rounded-full w-10" />
-                                    
-                                    <div >
-                                        <h3 className="font-semibold">{u.name}</h3>
-                                        <p className="avis-pseudo text-sm text-gray-500">{u.pseudo}</p>
-                                    </div>
-                                    <div className=" ml-6 w-3xl  ">{u.media}</div>
-                                </div>
-                                <p className="avis-text">{u.text}</p>
-                            </div>
-                        ))}
-                    </div>
-                )}
-                <div className="flex justify-center mt-4">
-                    <button
-                        className="bg-white text-blue-800 px-4 py-2 rounded font-bold shadow hover:bg-blue-100 transition"
-                        onClick={() => setSeeAll(!seeAll)}
-                    >
-                        {seeAll ? "close" : "See all reviews"}
-                    </button>
+
+  return (
+    <div className="avis-slider">
+      <h2 className="avis-title">What our clients are saying?</h2>
+      <p className="avis-subtitle">
+        We understand that if you are making money you will re-invest in your company
+      </p>
+
+      <div className="avis-container">
+        {!seeAll ? (
+          <Slider {...settings} className="avis-slider-track">
+            {user.map((u, index) => (
+              <motion.div 
+               key={index} 
+               className="avis-card"
+               initial={{scale:0.7,opacity:1}}
+               animate={{scale:1 , opacity:2}}
+               transition={{duration:1 , ease:"easeOut"}}
+               whileHover={{scale:1.2 }}
+              >
+                <div className="avis-card-header">
+                  <img src={u.avatar} alt={u.name} className="avis-avatar" />
+                  <div className="avis-user-info">
+                    <h3 className="avis-name">{u.name}</h3>
+                    <p className="avis-pseudo">{u.pseudo}</p>
+                  </div>
+                  <div className="avis-media">{u.media}</div>
                 </div>
-            </div>
+                <p className="avis-text">{u.text}</p>
+              </motion.div>
+            ))}
+          </Slider>
+        ) : (
+          <div className="avis-all">
+            {user.map((u, index) => (
+              <motion.div 
+               key={index} 
+               className="avis-card"
+               initial={{scale:0.7,opacity:1}}
+               animate={{scale:1 , opacity:2}}
+               transition={{duration:1 , ease:"easeOut"}}
+               whileHover={{scale:1.2 }}
+               >
+                <div className="avis-card-header">
+                  <img src={u.avatar} alt={u.name} className="avis-avatar" />
+                  <div className="avis-user-info">
+                    <h3 className="avis-name">{u.name}</h3>
+                    <p className="avis-pseudo">{u.pseudo}</p>
+                  </div>
+                  <div className="avis-media">{u.media}</div>
+                </div>
+                <p className="avis-text">{u.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        )}
+
+        <div className="avis-button-wrapper">
+          <button
+            className="avis-button"
+            onClick={() => setSeeAll(!seeAll)}
+          >
+            {seeAll ? "Close" : "See all reviews"}
+          </button>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default AvisSlider;

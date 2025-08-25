@@ -7,7 +7,7 @@ import ServiceSolution from '../components/ServiceSolution';
 import HomeCard from '../components/HomeCard';
 
 import Contact from '../components/contact/contact';
-
+import AvisSlider from '../components/avis/avis';
 
 
 import globe from '../assets/globe.png';
@@ -28,7 +28,7 @@ function App() {
       <AboutSection />
       <RecentsProjet />
       <ServiceSolution />
-      
+      <AvisSlider/>
       <Contact/>
       <FloatingActionButton />
      </div>

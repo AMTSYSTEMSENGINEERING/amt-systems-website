@@ -2,20 +2,13 @@ import React, { useState } from "react";
 import './contact.css'
 import { motion } from 'framer-motion'; 
 import {
-  Box,
-  Typography,
   Grid,
   Button,
   Paper,
   Select,
   MenuItem,
   InputLabel,
-  FormControl,
-  Card,
-  CardContent,
-  CardMedia,
-  useTheme,
-  useMediaQuery
+
 } from '@mui/material';
 
 
