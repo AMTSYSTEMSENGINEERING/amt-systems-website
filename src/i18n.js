@@ -14,7 +14,7 @@ const resources = {
 
         common: {
             heroTitle: "Innovative Solutions for Your Business",
-            heroDesc: "We offer a complete Web development service. We have the expertise and knowledge to deliver digital solutions across a wide range of sectors in Africa.",
+            heroDesc: "AMT Systems-Engineering SARL welcomes you to this page. Discover a privileged partner in the support, research, and implementation of technological solutions and products that meet your needs.",
             getStarted: "Get Started",
             brandAlt: "AMT Systems Engineering",
         },
@@ -69,17 +69,25 @@ const resources = {
                 {
                 title: "IT Solutions and Data Services",
                 desc:
-                    "We design web platforms and mobile apps for performance, craft visual identities, and analyze data to deliver strategic insights tailored to your business.",
+                    "The services performed by AMT Systems-Engineering SARL offer high-quality solutions by:\n" +
+                    "• Designing web platforms and mobile applications for optimal performance.\n" +
+                    "• Creating visual identities and branding solutions.\n" +
+                    "• Collecting, analyzing data and deriving strategic insights for your business.\n" +
+                    "All tailored to fit the unique needs of your business.",
                 },
                 {
-                title: "Systems Engineering and Prototyping",
+                title: "Systems-Engineering and Prototyping",
                 desc:
-                    "We co-create customized local solutions: systems engineering, mechanical/electronic design, and rapid prototyping backed by advanced simulation.",
+                    "Many business partners face unique challenges requiring tailored solutions. AMT Systems Engineering SARL works closely with customers to develop local, highly customized solutions addressing their specific needs. Our services include:\n" +
+                    "• systems engineering\n" +
+                    "• mechanical and electronic design\n" +
+                    "• rapid prototyping\n" +
+                    "All those supported by expertise in advanced engineering methods and simulation techniques.",
                 },
                 {
-                title: "Technical procurement and supplies",
+                title: "Technical, industrial procurement and supplies",
                 desc:
-                    "We connect partners with suppliers and manage technical supplies so you can focus on your core business.",
+                    "As companies and institutions increasingly focus on core competencies, the demand for outsourcing secondary activities like spare-part procurement continues to rise. AMT Systems Engineering SARL offers these services to its customers. Connecting our business partners with potential suppliers or managing supplies on their behalf is a key aspect of our operations.",
                 },
             ],
             }
@@ -97,7 +105,7 @@ const resources = {
 
       common: {
         heroTitle: "Des solutions innovantes pour votre entreprise",
-        heroDesc: "Nous offrons un service complet de développement Web. Nous avons l’expertise et le savoir-faire pour livrer des solutions numériques dans de nombreux secteurs en Afrique.",
+        heroDesc: "AMT Systems-Engineering SARL vous souhaite la bienvenue sur cette page.Decouvrez ainsi un partenaire privilégié dans l‘accompagnement, la recherche et la realisation  des solutions et produits technologiques qui correpondent à votre besoin.",
         getStarted: "Commencer",
         brandAlt: "AMT Systems Engineering",
     },
@@ -150,22 +158,31 @@ const resources = {
             servicesTexts: {
             items: [
                 {
-                title: "Solutions IT et services data",
+                title: "Solutions IT et services de données",
                 desc:
-                    "Nous concevons des plateformes web et apps mobiles performantes, des identités visuelles, et analysons vos données pour des insights stratégiques adaptés.",
+                    "Les services réalisés par AMT Systems-Engineering SARL offrent des solutions de haute qualité en :\n" +
+                    "• Conception de plateformes web et d’applications mobiles pour des performances optimales.\n" +
+                    "• Création d’identités visuelles et de solutions de branding.\n" +
+                    "• Collecte et analyse des données afin de dégager des insights stratégiques pour votre entreprise.\n" +
+                    "Le tout, entièrement adapté aux besoins uniques de votre activité.",
                 },
                 {
-                title: "Systèmes-engineering et prototypage",
+                title: "Ingénierie des systèmes et prototypage",
                 desc:
-                    "Nous co-créons des solutions locales sur mesure : ingénierie systèmes, conception méca/électronique et prototypage rapide, soutenus par la simulation avancée.",
+                    "De nombreux partenaires rencontrent des défis spécifiques nécessitant des solutions sur mesure. AMT Systems Engineering SARL travaille en étroite collaboration avec ses clients pour développer des solutions locales, hautement personnalisées, répondant à leurs besoins. Nos services incluent :\n" +
+                    "• ingénierie des systèmes\n" +
+                    "• conception mécanique et électronique\n" +
+                    "• prototypage rapide\n" +
+                    "Le tout soutenu par une expertise en méthodes d’ingénierie avancées et en techniques de simulation.",
                 },
                 {
-                title: "Approvisionnement technique et fournitures",
+                title: "Approvisionnement technique et industriel, et fournitures",
                 desc:
-                    "Nous connectons les partenaires aux fournisseurs et gérons les approvisionnements techniques pour vous recentrer sur l’essentiel.",
+                    "À mesure que les entreprises et institutions se concentrent sur leurs compétences clés, l’externalisation des activités secondaires — comme l’approvisionnement en pièces de rechange — progresse. AMT Systems Engineering SARL propose ces services : mise en relation de nos partenaires avec des fournisseurs potentiels ou gestion des fournitures en leur nom, un volet essentiel de nos opérations.",
                 },
             ],
             }
+
     },
   },
 };

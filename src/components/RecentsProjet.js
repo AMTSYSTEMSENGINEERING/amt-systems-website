@@ -10,13 +10,13 @@ import {
   useMediaQuery
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import s1 from '../assets/service.png'; // Assurez-vous que le chemin est correct
+import s1 from '../assets/service.png';
 
 const projects = [
   {
     title: "eCommerce Website",
     type: "Web Project",
-    image: s1, // Remplace par l'image dans /public
+    image: s1,
   },
   {
     title: "Banking System",

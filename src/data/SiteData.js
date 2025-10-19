@@ -1,47 +1,38 @@
-// SiteData.js
-// (retire l'import "motion/react-client" qui ne sert pas ici)
-
 export const getNavbarData = (t) => ({
   logo: { src: "/logo192.png", alt: "AMT Systems Engineering" },
   nav: [
     { label: t("navbar.home"), href: "/" },
     { label: t("navbar.about"), href: "/aboutus" },
-    { label: t("navbar.services"), href: "/services" },
+    {
+      label: "Services" || t("nav.services"), 
+      href: "/services",
+      items: [
+        { label: "Our approach", href: "/services" },
+        { label: "IT data services", href: "/services" },
+        { label: "System - Engineering", href: "/services" },
+        { label: "Technical procurement", href: "/services" },
+        { label: "Projects", href: "/services" },
+      ],
+    },
     { label: t("navbar.contact"), href: "/contact" },
     { label: t("navbar.reviews"), href: "/reviews" },
-    { label: "Galerie", href: "/galerie" },
+    {
+      label: "Galerie" || t("nav.gallery"), href: "/galerie",
+      items: [
+        { label: "Presse", href: "/galerie" },
+        { label: "References", href: "/galerie" },
+      ],
+    },
   ],
 });
 
 export const getFooterData = (t) => ({
   logo: { src: "/logo192.png", alt: "AMT Systems Engineering" },
-  about:
-    t("common.heroDesc"),
+  about: "We do it for you and well",
   columns: [
     {
-      title: "Web & Mobile App",
       links: [
-        { label: "Website Creation" },
-        { label: "Custom website Development" },
-        { label: "Web Portal Development" },
-        { label: "Software Development" },
-        { label: "CMS Website Development" },
-        { label: "Progressive Web Applications" },
-        { label: "Mobile Applications Development" },
-        { label: "E-Commerce Development" },
-      ],
-    },
-    {
-      title: "SEO & Digital Marketing",
-      links: [
-        { label: "Digital Marketing" },
-        { label: "Local SEO Services" },
-        { label: "Social Media Optimization" },
-        { label: "Lead Generation" },
-        { label: "Pay Per Click (PPC)" },
-        { label: "Bulk SMS" },
-        { label: "Branding And Design" },
-        { label: "Corporate Identity" },
+        { label: "Impressum" },
       ],
     },
   ],

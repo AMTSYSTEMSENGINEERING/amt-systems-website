@@ -2,7 +2,8 @@ import { Typography, Grid } from '@mui/material';
 import React from 'react';
 import { Check } from 'lucide-react';
 import HexagonalDesign from './Hexagone';
-import { i } from 'motion/react-client';
+// import { i } from 'motion/react-client';
+import { motion } from 'framer-motion';
 
 const AMTSystemsDesign = () => {
 

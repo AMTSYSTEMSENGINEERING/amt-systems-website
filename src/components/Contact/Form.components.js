@@ -4,7 +4,8 @@ import {
   InputAdornment, FormControl, Select, FormHelperText, Typography, Divider
 } from "@mui/material";
 import { Person, Email as EmailIcon, Phone, Business, Chat } from "@mui/icons-material";
-import emailjs from "emailjs-com";
+// import emailjs from "emailjs-com";
+import emailjs from '@emailjs/browser';
 import { useTranslation } from "react-i18next";
 
 const SERVICE_ID = "service_0z7kgsq";

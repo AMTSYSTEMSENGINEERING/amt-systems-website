@@ -246,3 +246,7 @@ body, html, #root {
 .star svg { fill: #cbd5e1; transition: transform .12s, fill .12s; }
 .star.is-on svg { fill: #f59e0b; } /* étoiles dorées */
 .star.is-hover svg { transform: scale(1.05); }
+
+.card__text {
+  white-space: pre-line; /* pour respecter les \n et afficher les puces sur plusieurs lignes */
+}
