@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Dropdown from "./Dropdown";
 
 export default function NavBar({
-  logo = { src: "", alt: "AMT Systems Engineering" },
+  logo = { src: "", alt: "AMT Systems-Engineering SARL" },
   nav = [],
   languages = { current: "Français", options: ["English", "Français"], onSelect: () => {} },
 }) {
@@ -11,7 +11,7 @@ export default function NavBar({
   return (
     <header className="nav">
       <div className="nav__inner">
-        <a className="nav__brand" href="#" aria-label={logo.alt}>
+        <a className="nav__brand" href="#top" aria-label={logo.alt}>
           {logo.src ? <img src={logo.src} alt={logo.alt} /> : <div className="nav__logo-fallback" />}
         </a>
 
@@ -21,7 +21,7 @@ export default function NavBar({
               {item.items ? (
                 <Dropdown label={item.label} items={item.items} />
               ) : (
-                <a className="nav__link" href={item.href || "#"}>{item.label}</a>
+                <a className="nav__link" href={item.href || "#top"}>{item.label}</a>
               )}
             </div>
           ))}
@@ -46,12 +46,12 @@ export default function NavBar({
                   <summary className="nav__mobile-summary">{item.label}</summary>
                   <div className="nav__mobile-sub">
                     {item.items.map((sub, k) => (
-                      <a key={k} className="nav__mobile-link" href={sub.href || "#"}>{sub.label}</a>
+                      <a key={k} className="nav__mobile-link" href={sub.href || "#top"}>{sub.label}</a>
                     ))}
                   </div>
                 </details>
               ) : (
-                <a className="nav__mobile-link" href={item.href || "#"}>{item.label}</a>
+                <a className="nav__mobile-link" href={item.href || "#top"}>{item.label}</a>
               )}
             </div>
           ))}

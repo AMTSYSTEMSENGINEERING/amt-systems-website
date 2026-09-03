@@ -1,61 +1,67 @@
-# 🌐 AMT Systems Engineering – Site Web Officiel
+# 🌐 AMT Systems-Engineering SARL – Site web officiel
 
-Bienvenue dans le dépôt du site web officiel de **AMT Systems Engineering**, une entreprise spécialisée dans l'ingénierie des systèmes, les solutions technologiques et les services innovants pour les secteurs industriels et technologiques.
+Bienvenue dans le dépôt du site vitrine d’**AMT Systems-Engineering SARL**, une entreprise spécialisée dans les solutions numériques, le développement web, le marketing digital et l’accompagnement des entreprises vers une meilleure présence en ligne.
 
 ---
 
 ## 🧭 À propos
 
-Ce projet a pour but de développer un site vitrine moderne, responsive et professionnel pour AMT Systems Engineering. Il présente l’entreprise, ses services, ses projets et permet de faciliter la prise de contact avec les clients et partenaires.
+Ce projet a pour objectif de présenter l’entreprise de manière moderne, claire et professionnelle, tout en mettant en avant ses services, sa méthode de travail et les bénéfices qu’elle apporte à ses clients.
 
 ---
 
 ## 📁 Structure du site
 
-Le site web comprend les sections suivantes :
+Le site comprend notamment :
 
 - 🏠 **Accueil**
-- 🧑‍💼 **À propos de nous**
-- 🛠️ **Nos services**
-- 🏗️ **Nos projets / Réalisations**
-- 👥 **Notre équipe**
+- 🧑‍💼 **À propos**
+- 🛠️ **Services**
+- ⚙️ **Méthode de travail**
 - 📩 **Contact**
 
 ---
 
 ## 🛠️ Technologies utilisées
 
-- HTML5 / CSS3 / JavaScript
-- [Framework à préciser] (exReact)
-- [Library] Materia UI
-- [API messagerie]  Formspree pour les formulaires de contact
-
-
----
-## 🖼️ Maquette du site
-
-Voici quelques captures de la maquette de notre site web  :
-
-<p align="center">
-  <img src="maquette/maq1.png" width="45%" style="display:inline-block; margin-right: 5%;" />
-  <img src="maquette/maq2.png" width="45%" style="display:inline-block;" />
-</p>
-<p align="center">
-  <img src="maquette/maq3.png" width="45%" style="display:inline-block; margin-right: 5%;" />
-</p>
+- React
+- JavaScript
+- CSS moderne
+- Vercel pour le déploiement
 
 ---
+
+## 🖼️ Maquette / conception
+
+La maquette et le design sont organisés pour offrir une interface premium et responsive avec une navigation claire et des appels à l’action orientés conversion.
+
+---
+
 ## 🚀 Lancer le projet en local
 
 ```bash
-# Clone du dépôt
-git clone https://github.com/ton-utilisateur/amt-systems-website.git
+# Cloner le dépôt
+git clone https://github.com/AMTSYSTEMSENGINEERING/amt-systems-website.git
 
-# Aller dans le dossier du projet
+# Accéder au dossier du projet
 cd amt-systems-website
 
-# Installer les dépendances (si applicable)
+# Installer les dépendances
 npm install
 
-# Lancer le serveur de développement
-npm run dev
+# Démarrer le projet en local
+npm start
+```
+
+Pour un build de production :
+
+```bash
+npm run build
+```
+
+---
+
+## 🌍 Déploiement
+
+Le projet est prêt pour un déploiement sur Vercel ou Firebase selon les besoins de l’entreprise.
+

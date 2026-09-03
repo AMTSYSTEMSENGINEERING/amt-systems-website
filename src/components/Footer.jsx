@@ -1,7 +1,7 @@
   import React from "react";
 
 export default function Footer({
-  logo = { src: "", alt: "AMT Systems Engineering" },
+  logo = { src: "", alt: "AMT Systems-Engineering SARL" },
   about,
   columns = [],
   contact = { city: "Douala", country: "Cameroon", phone: "+237 6 98 98 74 85", email: "amtsystemsengineering@gmail.com" },
@@ -19,7 +19,7 @@ export default function Footer({
           {about && <p className="footer__about">{about}</p>}
           <div className="footer__socials">
             {socials.map((s, i) => (
-              <a key={i} href={s.href || "#"} className="footer__social" aria-label={s.label}>{s.label || "•"}</a>
+              <a key={i} href={s.href || "#top"} className="footer__social" aria-label={s.label}>{s.label || "•"}</a>
             ))}
           </div>
           <hr className="footer__rule" />
@@ -30,7 +30,7 @@ export default function Footer({
             <h4 className="footer__title">{col.title}</h4>
             <ul className="footer__list">
               {col.links?.map((l, k) => (
-                <li key={k}><a href={l.href || "#"}>{l.label}</a></li>
+                <li key={k}><a href={l.href || "#top"}>{l.label}</a></li>
               ))}
             </ul>
           </div>

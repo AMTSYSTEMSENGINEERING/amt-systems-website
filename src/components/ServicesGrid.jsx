@@ -4,10 +4,13 @@ import ServiceCard from "./ServiceCard";
 export default function ServicesGrid({ services = [] }) {
   return (
     <section className="services">
+      <div className="section-title">
+        <span className="eyebrow">Nos services</span>
+        <h2>Les expertises qui répondent à vos défis</h2>
+      </div>
       <div className="services__head">
-        <h2>We are a strategic technology company in Cameroon<br className="br-hidden" /> focusing on real results</h2>
         <p>
-          We offer a complete Web development Services. We have expertise and knowledge to deliver digital solutions to clients across a wide range of sectors in Africa
+          AMT propose une gamme complète de services d'ingénierie des systèmes et de transformation digitale. Nous aidons les organisations africaines à relever leurs défis par des solutions technologiques robustes, innovantes et adaptées au contexte local.
         </p>
       </div>
       <div className="services__grid">
