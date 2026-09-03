@@ -1,11 +1,12 @@
-  import React from "react";
+import React from "react";
+import Icon from "./Icon";
 
 export default function Footer({
   logo = { src: "", alt: "AMT Systems-Engineering SARL" },
   about,
   columns = [],
-  contact = { city: "Douala", country: "Cameroon", phone: "+237 6 98 98 74 85", email: "amtsystemsengineering@gmail.com" },
-  socials = [], // [{label, href}]
+  contact = { city: "Douala", country: "Cameroon", phone: "+237 6 98 98 74 85", email: "contact@amtsyseng.com" },
+  socials = [],
   languages = { options: ["English", "Français"], onSelect: () => {} },
   year = new Date().getFullYear(),
 }) {
@@ -19,10 +20,11 @@ export default function Footer({
           {about && <p className="footer__about">{about}</p>}
           <div className="footer__socials">
             {socials.map((s, i) => (
-              <a key={i} href={s.href || "#top"} className="footer__social" aria-label={s.label}>{s.label || "•"}</a>
+              <a key={i} href={s.href || "#top"} className="footer__social" aria-label={s.label} target="_blank" rel="noreferrer">
+                <Icon name={s.icon || "web"} />
+              </a>
             ))}
           </div>
-          <hr className="footer__rule" />
         </div>
 
         {columns.map((col, i) => (
@@ -37,25 +39,25 @@ export default function Footer({
         ))}
 
         <div>
-          <h4 className="footer__title">Adress</h4>
+          <h4 className="footer__title">Adresse</h4>
           <ul className="footer__contact">
-            <li>📍 {contact.city} - {contact.country}</li>
-            <li>📞 {contact.phone}</li>
-            <li>✉️ {contact.email}</li>
+            <li>{contact.city}, {contact.country}</li>
+            <li><a href={`tel:${contact.phone.replace(/\s/g, "")}`}>{contact.phone}</a></li>
+            <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
           </ul>
           <div className="footer__langs">
             {languages.options.map((lng) => (
-              <button key={lng} className="footer__langbtn">{lng}</button>
+              <button key={lng} className="footer__langbtn" type="button">{lng}</button>
             ))}
           </div>
         </div>
       </div>
 
       <div className="footer__bottom">
-        <p>©{year} <strong>AMT System Engineering</strong> is proudly Powered by <strong>AMT Team</strong></p>
+        <p>© {year} AMT Systems-Engineering SARL</p>
         <div className="footer__legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms & Conditions</a>
+          <a href="#contact">Confidentialité</a>
+          <a href="#contact">Conditions</a>
         </div>
       </div>
     </footer>

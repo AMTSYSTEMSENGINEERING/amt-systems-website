@@ -26,10 +26,11 @@ export default function NavBar({
             </div>
           ))}
           <Dropdown
-            label={<span style={{display:"inline-flex",gap:6,alignItems:"center"}}>🌐 {languages.current}</span>}
+            label={languages.current === "English" ? "EN" : "FR"}
             align="right"
             items={languages.options.map((lng) => ({ label: lng, href: "#" }))}
           />
+          <a className="nav__cta" href="#contact">Nous contacter</a>
         </nav>
 
         <button className="nav__burger" aria-label="Toggle menu" onClick={() => setOpen((v) => !v)}>
@@ -46,15 +47,16 @@ export default function NavBar({
                   <summary className="nav__mobile-summary">{item.label}</summary>
                   <div className="nav__mobile-sub">
                     {item.items.map((sub, k) => (
-                      <a key={k} className="nav__mobile-link" href={sub.href || "#top"}>{sub.label}</a>
+                      <a key={k} className="nav__mobile-link" href={sub.href || "#top"} onClick={() => setOpen(false)}>{sub.label}</a>
                     ))}
                   </div>
                 </details>
               ) : (
-                <a className="nav__mobile-link" href={item.href || "#top"}>{item.label}</a>
+                <a className="nav__mobile-link" href={item.href || "#top"} onClick={() => setOpen(false)}>{item.label}</a>
               )}
             </div>
           ))}
+          <a className="nav__cta nav__cta--mobile" href="#contact" onClick={() => setOpen(false)}>Nous contacter</a>
           <div className="nav__mobile-langs">
             <div className="nav__mobile-langs-title">Language</div>
             {languages.options.map((lng) => (
