@@ -1,5 +1,6 @@
 {
   "name": "amt-systems-website",
+  "homepage": "https://amtsyseng.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
