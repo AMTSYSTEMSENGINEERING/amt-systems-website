@@ -5,7 +5,7 @@ export default function Footer({
   logo = { src: "", alt: "AMT Systems-Engineering SARL" },
   about,
   columns = [],
-  contact = { city: "Douala", country: "Cameroon", phone: "+237 6 98 98 74 85", email: "contact@amtsyseng.com" },
+  contact = { city: "Douala, Bonamoussadi, Terminus", country: "Cameroun", phone: "+237 681 249 814", whatsapp: "+237681249814", email: "contact@amtsyseng.com" },
   socials = [],
   languages = { options: ["English", "Français"], onSelect: () => {} },
   year = new Date().getFullYear(),
@@ -39,10 +39,11 @@ export default function Footer({
         ))}
 
         <div>
-          <h4 className="footer__title">Adresse</h4>
+          <h4 className="footer__title">Contact</h4>
           <ul className="footer__contact">
             <li>{contact.city}, {contact.country}</li>
             <li><a href={`tel:${contact.phone.replace(/\s/g, "")}`}>{contact.phone}</a></li>
+            <li><a href={`https://wa.me/${contact.whatsapp?.replace("+", "") || contact.phone.replace(/\s/g, "").replace("+", "")}`} target="_blank" rel="noreferrer">WhatsApp</a></li>
             <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
           </ul>
           <div className="footer__langs">
@@ -53,11 +54,22 @@ export default function Footer({
         </div>
       </div>
 
+      <div className="footer__company">
+        <div>
+          <span>RCCM</span>
+          <strong>{contact.rccm}</strong>
+        </div>
+        <div>
+          <span>{contact.bank}</span>
+          <strong>{contact.account}</strong>
+        </div>
+      </div>
+
       <div className="footer__bottom">
         <p>© {year} AMT Systems-Engineering SARL</p>
         <div className="footer__legal">
-          <a href="#contact">Confidentialité</a>
-          <a href="#contact">Conditions</a>
+          <a href="/contact">Confidentialité</a>
+          <a href="/contact">Conditions</a>
         </div>
       </div>
     </footer>

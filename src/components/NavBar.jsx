@@ -11,7 +11,7 @@ export default function NavBar({
   return (
     <header className="nav">
       <div className="nav__inner">
-        <a className="nav__brand" href="#top" aria-label={logo.alt}>
+        <a className="nav__brand" href="/" aria-label={logo.alt}>
           {logo.src ? <img src={logo.src} alt={logo.alt} /> : <div className="nav__logo-fallback" />}
         </a>
 
@@ -30,7 +30,7 @@ export default function NavBar({
             align="right"
             items={languages.options.map((lng) => ({ label: lng, href: "#" }))}
           />
-          <a className="nav__cta" href="#contact">Nous contacter</a>
+          <a className="nav__cta" href="/contact">Nous contacter</a>
         </nav>
 
         <button className="nav__burger" aria-label="Toggle menu" onClick={() => setOpen((v) => !v)}>
@@ -56,7 +56,7 @@ export default function NavBar({
               )}
             </div>
           ))}
-          <a className="nav__cta nav__cta--mobile" href="#contact" onClick={() => setOpen(false)}>Nous contacter</a>
+          <a className="nav__cta nav__cta--mobile" href="/contact" onClick={() => setOpen(false)}>Nous contacter</a>
           <div className="nav__mobile-langs">
             <div className="nav__mobile-langs-title">Language</div>
             {languages.options.map((lng) => (

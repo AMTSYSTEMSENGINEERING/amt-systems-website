@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { NavBar, ServicesGrid, Footer, Icon } from "./components";
 
 function App() {
+  const page = window.location.pathname.replace(/\/$/, "") || "/";
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,30 +30,30 @@ function App() {
   const navbarData = {
     logo: { src: "/logo_new.jpeg", alt: "AMT Systems-Engineering SARL" },
     nav: [
-      { label: "Accueil", href: "#top" },
-      { label: "À propos", href: "#about" },
+      { label: "Accueil", href: "/" },
+      { label: "À propos", href: "/about" },
       {
         label: "Services",
         items: [
-          { label: "Services", href: "#services" },
-          { label: "Expertises", href: "#expertises" },
+          { label: "Services", href: "/services" },
+          { label: "Expertises", href: "/expertises" },
         ],
       },
       {
         label: "Méthode",
         items: [
-          { label: "Notre organisation", href: "#nos-procedes" },
-          { label: "Méthodes de création de valeur", href: "#creation-de-valeur" },
+          { label: "Notre organisation", href: "/organisation" },
+          { label: "Méthodes de création de valeur", href: "/methode" },
         ],
       },
       {
         label: "Ressources",
         items: [
-          { label: "Téléchargements", href: "#telechargements" },
-          { label: "Galerie", href: "#photos" },
+          { label: "Téléchargements", href: "/ressources" },
+          { label: "Galerie", href: "/galerie" },
         ],
       },
-      { label: "Contact", href: "#contact" },
+      { label: "Contact", href: "/contact" },
     ],
     languages: { current: "Français", options: ["English", "Français"], onSelect: (lng) => console.log(lng) },
   };
@@ -63,42 +64,42 @@ function App() {
       title: "Systems Engineering",
       description:
         "Ingénierie complète : exigences, architecture hardware/software, vérification et validation. Conception robuste de systèmes complexes.",
-      href: "#contact",
+      href: "/contact",
     },
     {
       icon: "data",
       title: "Data Engineering & Analytics",
       description:
         "Acquisition, transformation, analyse et modélisation des données pour éclairer les opérations et les décisions stratégiques.",
-      href: "#contact",
+      href: "/contact",
     },
     {
       icon: "web",
       title: "Web & Mobile App Design",
       description:
         "Applications web, mobiles et embarquées conçues pour vos processus métier et l’expérience de vos utilisateurs.",
-      href: "#contact",
+      href: "/contact",
     },
     {
       icon: "proto",
       title: "Prototyping & Reverse Engineering",
       description:
         "Modélisation CAD, impression 3D, scan 3D, layout hardware et prototypage PCB. De l’idée au démonstrateur technique.",
-      href: "#contact",
+      href: "/contact",
     },
     {
       icon: "supply",
       title: "Procurement & Supply Management",
       description:
         "Identification des besoins, gestion des fournisseurs et optimisation de la chaîne d’approvisionnement, avec un réseau d’associés.",
-      href: "#contact",
+      href: "/contact",
     },
     {
       icon: "ai",
       title: "AI-Integrated Smart Solutions",
       description:
         "Écosystème intégré : hardware, software, mécanique et intelligence artificielle, livré depuis une seule source.",
-      href: "#contact",
+      href: "/contact",
     },
   ];
 
@@ -119,25 +120,35 @@ function App() {
       {
         title: "Expertises",
         links: [
-          { label: "Ingénierie de systèmes", href: "#expertises" },
-          { label: "Conseil stratégique", href: "#services" },
-          { label: "Solutions numériques", href: "#services" },
-          { label: "Pilotage de projets", href: "#nos-procedes" },
-          { label: "Formation et accompagnement", href: "#contact" },
+          { label: "Ingénierie de systèmes", href: "/expertises" },
+          { label: "Conseil stratégique", href: "/services" },
+          { label: "Solutions numériques", href: "/services" },
+          { label: "Pilotage de projets", href: "/organisation" },
+          { label: "Formation et accompagnement", href: "/contact" },
         ],
       },
       {
         title: "Navigation",
         links: [
-          { label: "À propos", href: "#about" },
-          { label: "Services", href: "#services" },
-          { label: "Méthode", href: "#creation-de-valeur" },
-          { label: "Ressources", href: "#telechargements" },
-          { label: "Contact", href: "#contact" },
+          { label: "À propos", href: "/about" },
+          { label: "Services", href: "/services" },
+          { label: "Méthode", href: "/methode" },
+          { label: "Ressources", href: "/ressources" },
+          { label: "Contact", href: "/contact" },
         ],
       },
     ],
-    contact: { city: "Douala", country: "Cameroun", phone: "+237 6 98 98 74 85", email: "contact@amtsyseng.com" },
+    contact: {
+      city: "Douala, Bonamoussadi, Terminus",
+      country: "Cameroun",
+      phone: "+237 681 249 814",
+      whatsapp: "+237681249814",
+      email: "contact@amtsyseng.com",
+      rccm: "CM-DLA-01-2025-B12-00010",
+      niu: "M012517522439N",
+      bank: "AFRILAND FIRST BANK",
+      account: "10005-00022-10415851001-07",
+    },
     socials: [
       { label: "Facebook", href: "https://facebook.com", icon: "facebook" },
       { label: "Instagram", href: "https://instagram.com", icon: "instagram" },
@@ -150,8 +161,8 @@ function App() {
     <div className="page" id="top">
       <NavBar {...navbarData} />
 
-      <main>
-        <section className="hero">
+      <main data-page={page}>
+        <section className="hero" data-page="/">
           <div className="hero__media">
             <img src="/image_1.jpg" alt="Équipe AMT Systems-Engineering en session de conception" />
             <div className="hero__veil" />
@@ -164,34 +175,50 @@ function App() {
               dans la conception et le déploiement de solutions technologiques utiles à l’émergence locale.
             </p>
             <div className="hero__actions">
-              <a href="#contact" className="btn btn--primary">Nous contacter</a>
-              <a href="#services" className="btn btn--ghost">Découvrir nos services</a>
+              <a href="/contact" className="btn btn--primary">Nous contacter</a>
+              <a href="/services" className="btn btn--ghost">Découvrir nos services</a>
             </div>
           </div>
         </section>
 
-        <section className="stats-bar" aria-label="AMT en chiffres">
+        <section className="stats-bar" data-page="/" aria-label="AMT en chiffres">
           <div className="container stats-bar__grid">
-            <article>
+            <article className="stats-bar__item">
               <strong>Douala</strong>
               <span>Ancrage local, Cameroun</span>
             </article>
-            <article>
+            <article className="stats-bar__item">
               <strong>6 expertises</strong>
               <span>Systèmes, data, software, hardware</span>
             </article>
-            <article>
+            <article className="stats-bar__item">
               <strong>Depuis 2024</strong>
               <span>Innovation utile et mesurable</span>
             </article>
-            <article>
+            <article className="stats-bar__item">
               <strong>1 source</strong>
               <span>De l’idée au déploiement</span>
             </article>
           </div>
         </section>
 
-        <section className="section about" id="about">
+        <section className="home-statement" data-page="/" aria-label="Engagement AMT Systems-Engineering">
+          <div className="container home-statement__inner">
+            <div className="home-statement__globe" aria-hidden="true">
+              <div className="home-statement__orbit home-statement__orbit--one" />
+              <div className="home-statement__orbit home-statement__orbit--two" />
+              <div className="home-statement__mark">
+                <img src="/logo_new.jpeg" alt="" />
+              </div>
+            </div>
+            <div className="home-statement__copy">
+              <p className="home-statement__line home-statement__line--first">Des solutions locales pour un besoin local.</p>
+              <p className="home-statement__line home-statement__line--second">We do it for you, and we do it well.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="section about" id="about" data-page="/about">
           <div className="container">
             <div className="section-title section-title--left">
               <span className="eyebrow">À propos</span>
@@ -302,13 +329,13 @@ function App() {
           </div>
         </section>
 
-        <section className="section section--soft" id="services">
+        <section className="section section--soft" id="services" data-page="/services">
           <div className="container">
             <ServicesGrid services={services} />
           </div>
         </section>
 
-        <section className="section expertises" id="expertises">
+        <section className="section expertises" id="expertises" data-page="/expertises">
           <div className="container expertises__content">
             <div className="expertises__intro">
               <span className="eyebrow">Nos expertises</span>
@@ -354,7 +381,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section projects" id="projects">
+        <section className="section projects" id="projects" data-page="/projets">
           <div className="container">
             <div className="section-title">
               <span className="eyebrow">Projets</span>
@@ -367,12 +394,12 @@ function App() {
                 Nos projets de référence seront bientôt présentés ici : transformations numériques, innovations industrielles
                 et déploiements technologiques.
               </p>
-              <a href="#contact" className="btn btn--secondary">Discutons de votre projet</a>
+              <a href="/contact" className="btn btn--secondary">Discutons de votre projet</a>
             </div>
           </div>
         </section>
 
-        <section className="section process" id="nos-procedes">
+        <section className="section process" id="nos-procedes" data-page="/organisation">
           <div className="container">
             <div className="section-title">
               <span className="eyebrow">Notre organisation</span>
@@ -418,7 +445,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section value-methods" id="creation-de-valeur">
+        <section className="section value-methods" id="creation-de-valeur" data-page="/methode">
           <div className="container">
             <div className="section-title">
               <span className="eyebrow">Méthode</span>
@@ -453,7 +480,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section downloads" id="telechargements">
+        <section className="section downloads" id="telechargements" data-page="/ressources">
           <div className="container downloads__layout">
             <div className="section-title section-title--left">
               <span className="eyebrow">Ressources</span>
@@ -471,7 +498,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section gallery" id="photos">
+        <section className="section gallery" id="photos" data-page="/galerie">
           <div className="container">
             <div className="section-title">
               <span className="eyebrow">Galerie</span>
@@ -487,7 +514,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section contact-wrap" id="contact">
+        <section className="section contact-wrap" id="contact" data-page="/contact">
           <div className="container contact-section">
             <div className="contact-section__info">
               <span className="eyebrow">Contact</span>
@@ -499,11 +526,15 @@ function App() {
               <ul className="contact-list">
                 <li>
                   <span>Localisation</span>
-                  Douala, Cameroun
+                  Douala, Bonamoussadi, Terminus, Cameroun
                 </li>
                 <li>
                   <span>Téléphone</span>
-                  <a href="tel:+237698987485">+237 6 98 98 74 85</a>
+                  <a href="tel:+237681249814">+237 681 249 814</a>
+                </li>
+                <li>
+                  <span>WhatsApp</span>
+                  <a href="https://wa.me/237681249814" target="_blank" rel="noreferrer">+237 681 249 814</a>
                 </li>
                 <li>
                   <span>Email</span>
