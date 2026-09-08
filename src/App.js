@@ -1,66 +1,7 @@
-import './styles.css';
-import React, { useEffect, useState } from "react";
+import "./styles.css";
+import React, { useState } from "react";
 import { NavBar, ServicesGrid, Footer, Icon } from "./components";
-
-const englishTranslations = {
-  "Accueil": "Home", "À propos": "About", "Méthode": "Approach", "Notre organisation": "Our organization",
-  "Méthodes de création de valeur": "Value creation methods", "Ressources": "Resources", "Téléchargements": "Downloads",
-  "Galerie": "Gallery", "Contact": "Contact", "Nous contacter": "Contact us", "Langue": "Language",
-  "Ingénierie des systèmes au service de votre entreprise et de votre projet.": "Systems engineering for your business and your project.",
-  "Depuis 2024, AMT Systems-Engineering SARL accompagne les entreprises, institutions et jeunes entrepreneurs dans la conception et le déploiement de solutions technologiques utiles à l’émergence locale.": "Since 2024, AMT Systems-Engineering SARL has supported companies, institutions and young entrepreneurs in designing and deploying technology solutions that contribute to local development.",
-  "Comprendre les défis, développer les compétences et construire des solutions utiles à l’Afrique.": "Understand challenges, develop skills and build solutions that serve Africa.",
-  "L’Afrique subsaharienne doit accélérer sa transformation tout en répondant à des besoins industriels, sociaux et économiques complexes.": "Sub-Saharan Africa must accelerate its transformation while addressing complex industrial, social and economic needs.",
-  "AMT répond": "AMT responds", "par une approche intégrée : transformer les besoins en solutions et créer un pont": "through an integrated approach: turning needs into solutions and creating a bridge",
-  "entre savoirs académiques, expertise locale et bonnes pratiques internationales.": "between academic knowledge, local expertise and international best practices.",
-  "Positionner le continent africain comme": "Position the African continent as", "en faisant de l’ingénierie": "by making systems engineering",
-  "des systèmes un moteur de transformation.": "a driver of transformation.", "adaptées au contexte africain,": "adapted to the African context,", "avec une expertise locale.": "with local expertise.",
-  "Innovation": "Innovation", "utile et adaptée au contexte local": "useful and adapted to local realities", "Excellence": "Excellence", "rigueur et fiabilité": "rigor and reliability",
-  "Intégrité": "Integrity", "et responsabilité": "and responsibility", "Collaboration": "Collaboration", "et transmission des savoirs": "and knowledge sharing", "Impact durable": "Sustainable impact", "et développement inclusif": "and inclusive development",
-  "Ingénierie des systèmes": "Systems engineering", "Hardware & software": "Hardware & software", "Data & IA": "Data & AI", "Mécanique": "Mechanical engineering", "Projets": "Projects", "Leadership": "Leadership",
-  "Systems Engineering": "Systems Engineering", "Ingénierie complète : exigences, architecture hardware/software, vérification et validation. Conception robuste de systèmes complexes.": "End-to-end engineering: requirements, hardware/software architecture, verification and validation. Robust design for complex systems.",
-  "Acquisition, transformation, analyse et modélisation des données pour éclairer les opérations et les décisions stratégiques.": "Data acquisition, transformation, analysis and modeling to inform operations and strategic decisions.",
-  "Applications web, mobiles et embarquées conçues pour vos processus métier et l’expérience de vos utilisateurs.": "Web, mobile and embedded applications designed for your business processes and user experience.",
-  "Modélisation CAD, impression 3D, scan 3D, layout hardware et prototypage PCB. De l’idée au démonstrateur technique.": "CAD modeling, 3D printing, 3D scanning, hardware layout and PCB prototyping. From idea to technical demonstrator.",
-  "Identification des besoins, gestion des fournisseurs et optimisation de la chaîne d’approvisionnement, avec un réseau d’associés.": "Requirements identification, supplier management and supply-chain optimization through a network of associates.",
-  "Écosystème intégré : hardware, software, mécanique et intelligence artificielle, livré depuis une seule source.": "An integrated ecosystem of hardware, software, mechanics and artificial intelligence, delivered from a single source.",
-  "AMT associe l'ingénierie des systèmes, le développement hardware et software, l'analyse de données, l'intelligence artificielle et l'ingénierie mécanique. Cette expertise multidisciplinaire nous permet de concevoir, réaliser et accompagner des solutions adaptées aux besoins concrets de nos clients.": "AMT combines systems engineering, hardware and software development, data analysis, artificial intelligence and mechanical engineering. This multidisciplinary expertise allows us to design, build and support solutions adapted to our clients' concrete needs.",
-  "Analyse des exigences, architecture, vérification et validation de systèmes complexes.": "Requirements analysis, architecture, verification and validation of complex systems.", "Conception d'applications, systèmes embarqués, interfaces et composants électroniques.": "Design of applications, embedded systems, interfaces and electronic components.", "Acquisition, modélisation et valorisation des données pour éclairer la décision.": "Data acquisition, modeling and use to inform decisions.", "Modélisation, prototypage et intégration des éléments matériels dans la solution finale.": "Modeling, prototyping and integration of hardware into the final solution.", "Organisation, suivi et coordination pour faire progresser chaque projet avec rigueur.": "Organization, monitoring and coordination to move every project forward with rigor.", "Mobilisation des talents et création de valeur durable au sein des organisations.": "Mobilizing talent and creating lasting value within organizations.",
-  "Nos projets de référence seront bientôt présentés ici : transformations numériques, innovations industrielles et déploiements technologiques.": "Our reference projects will be presented here soon: digital transformations, industrial innovations and technology deployments.",
-  "Une organisation qui relie le pilotage, la relation client, la réalisation et les fonctions support autour d’un même objectif : livrer une solution utile et fiable.": "An organization that connects leadership, client relationships, delivery and support functions around one goal: delivering a useful and reliable solution.",
-  "Stratégie": "Strategy", "finances et administration au service de l’ensemble de l’organisation.": "finance and administration serving the entire organization.", "Recueillir le besoin, comprendre le contexte et établir la relation avec le client.": "Gather the need, understand the context and build the client relationship.", "Concevoir, réaliser, vérifier et améliorer les solutions tout au long du projet.": "Design, build, verify and improve solutions throughout the project.", "Livrer la solution, accompagner son appropriation et maintenir la relation client.": "Deliver the solution, support its adoption and maintain the client relationship.",
-  "Notre approche centrée client transforme un besoin réel en solution mesurable. Chaque étape alimente la suivante et les retours du terrain nourrissent l’amélioration continue.": "Our customer-centered approach turns a real need into a measurable solution. Each step informs the next, while field feedback drives continuous improvement.",
-  "Consultez notre brochure pour découvrir la vision, les services et la démarche de création de valeur d’AMT.": "Read our brochure to discover AMT's vision, services and value creation approach.", "Présentation de l’entreprise, des expertises et de notre méthode de travail.": "An overview of the company, our expertise and our working method.", "Télécharger la brochure": "Download the brochure", "Ingénierie, prototypage et solutions numériques depuis Douala.": "Engineering, prototyping and digital solutions from Douala.",
-  "Nous accompagnons les entreprises, institutions et jeunes talents dans la création de solutions technologiques adaptées à leur contexte et à leurs ambitions de croissance.": "We support companies, institutions and young talents in creating technology solutions adapted to their context and growth ambitions.", "Douala, Bonamoussadi, Terminus, Cameroun": "Douala, Bonamoussadi, Terminus, Cameroon", "Votre message a été préparé dans votre client email. Vous pouvez l’envoyer directement.": "Your message has been prepared in your email client. You can send it directly.",
-  "Découvrir nos services": "Explore our services", "Ancrage local, Cameroun": "Local roots, Cameroon", "6 expertises": "6 areas of expertise",
-  "Depuis 2024": "Since 2024", "Innovation utile et mesurable": "Useful, measurable innovation", "1 source": "One source",
-  "De l’idée au déploiement": "From idea to deployment", "Systèmes, data, software, hardware": "Systems, data, software, hardware",
-  "Des solutions locales pour un besoin local.": "Local solutions for local needs.", "Engagement AMT Systems-Engineering": "AMT Systems-Engineering commitment",
-  "Le contexte": "The context", "Les défis de l’Afrique subsaharienne": "The challenges of sub-Saharan Africa",
-  "Renforcer les compétences locales": "Strengthen local skills", "Adapter les technologies au terrain": "Adapt technologies to local realities", "Relier innovation et développement durable": "Connect innovation and sustainable development",
-  "Notre vision": "Our vision", "Notre mission": "Our mission", "leader technologique": "technology leader", "solutions robustes et innovantes": "robust and innovative solutions",
-  "Nos repères": "Our principles", "Les valeurs qui nous guident": "The values that guide us", "Les moyens d’agir": "Our capabilities", "Les compétences au service de la mission": "Skills serving the mission",
-  "Notre force collective": "Our collective strength", "Une équipe au croisement de plusieurs expertises": "A team at the intersection of several areas of expertise",
-  "Nos expertises": "Our expertise", "Des capacités complémentaires pour des solutions intégrées.": "Complementary capabilities for integrated solutions.",
-  "Des missions structurées pour créer de la valeur durable.": "Structured engagements that create lasting value.", "Études de cas à venir": "Case studies coming soon", "Discutons de votre projet": "Let's discuss your project",
-  "Nos procédés": "Our processes", "Management exécutif": "Executive management", "Réalisation": "Delivery", "Développement": "Development", "Sortie": "Output", "Marketing & livraison": "Marketing & delivery", "Direction": "Leadership", "Entrée": "Input",
-  "Fonctions support & transverses": "Support and cross-functional functions", "Ressources humaines": "Human resources", "Contrôle qualité": "Quality control", "Comptabilité & inventaire": "Accounting & inventory", "Achats": "Procurement", "IT, administration & partenaires": "IT, administration & partners",
-  "Écouter": "Listen", "Cadrer": "Frame", "Concevoir": "Design", "Prototyper": "Prototype", "Déployer": "Deploy", "Améliorer": "Improve",
-  "L’équipe au travail": "The team at work", "Conception collaborative": "Collaborative design", "Construisons ensemble des solutions utiles et durables.": "Let's build useful and sustainable solutions together.",
-  "Localisation": "Location", "Téléphone": "Phone", "Nom": "Name", "Entreprise": "Company", "Message": "Message", "Envoyer ma demande": "Send my request", "Confidentialité": "Privacy", "Conditions": "Terms"
-};
-
-function translatePage(language) {
-  document.documentElement.lang = language === "English" ? "en" : "fr";
-  if (language !== "English") return;
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  const textNodes = [];
-  let node;
-  while ((node = walker.nextNode())) textNodes.push(node);
-  textNodes.forEach((textNode) => {
-    const trimmed = textNode.nodeValue.trim();
-    if (englishTranslations[trimmed]) textNode.nodeValue = textNode.nodeValue.replace(trimmed, englishTranslations[trimmed]);
-  });
-}
+import copy from "./i18n";
 
 function App() {
   const page = window.location.pathname.replace(/\/$/, "") || "/";
@@ -75,16 +16,15 @@ function App() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
-
-  useEffect(() => {
-    translatePage(language);
-  }, [language]);
+  const t = copy[language] || copy.Français;
 
   const handleLanguageChange = (nextLanguage) => {
     if (nextLanguage !== "English" && nextLanguage !== "Français") return;
     window.localStorage.setItem("amt-language", nextLanguage);
     setLanguage(nextLanguage);
   };
+
+  document.documentElement.lang = language === "English" ? "en" : "fr";
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -93,133 +33,91 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const subject = encodeURIComponent(`Demande de contact - ${formData.company || "Client"}`);
+    const subject = encodeURIComponent(`${t.contact.mailSubject} - ${formData.company || t.contact.mailClient}`);
     const body = encodeURIComponent(
-      `Nom: ${formData.name}\nEmail: ${formData.email}\nEntreprise: ${formData.company}\n\nMessage:\n${formData.message}`
+      `${t.contact.mailName}: ${formData.name}\n${t.contact.mailEmail}: ${formData.email}\n${t.contact.mailCompany}: ${formData.company}\n\n${t.contact.mailMessage}:\n${formData.message}`
     );
     window.location.href = `mailto:contact@amtsyseng.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
-  const isEnglish = language === "English";
-  const text = (french, english) => (isEnglish ? english : french);
-
   const navbarData = {
     logo: { src: "/logo_new.jpeg", alt: "AMT Systems-Engineering SARL" },
     nav: [
-      { label: text("Accueil", "Home"), href: "/" },
-      { label: text("À propos", "About"), href: "/about" },
+      { label: t.nav.home, href: "/" },
+      { label: t.nav.about, href: "/about" },
       {
-        label: "Services",
+        label: t.nav.services,
         items: [
-          { label: "Services", href: "/services" },
-          { label: "Expertises", href: "/expertises" },
+          { label: t.nav.services, href: "/services" },
+          { label: t.nav.expertises, href: "/expertises" },
         ],
       },
       {
-        label: text("Méthode", "Approach"),
+        label: t.nav.method,
         items: [
-          { label: text("Notre organisation", "Our organization"), href: "/organisation" },
-          { label: text("Méthodes de création de valeur", "Value creation methods"), href: "/methode" },
+          { label: t.nav.organisation, href: "/organisation" },
+          { label: t.nav.valueMethods, href: "/methode" },
         ],
       },
       {
-        label: text("Ressources", "Resources"),
+        label: t.nav.resources,
         items: [
-          { label: text("Téléchargements", "Downloads"), href: "/ressources" },
-          { label: text("Galerie", "Gallery"), href: "/galerie" },
+          { label: t.nav.downloads, href: "/ressources" },
+          { label: t.nav.gallery, href: "/galerie" },
         ],
       },
-      { label: text("Contact", "Contact"), href: "/contact" },
+      { label: t.nav.contact, href: "/contact" },
     ],
     languages: { current: language, options: ["English", "Français"], onSelect: handleLanguageChange },
   };
 
   const services = [
-    {
-      icon: "systems",
-      title: "Systems Engineering",
-      description:
-        "Ingénierie complète : exigences, architecture hardware/software, vérification et validation. Conception robuste de systèmes complexes.",
-      href: "/contact",
-    },
-    {
-      icon: "data",
-      title: "Data Engineering & Analytics",
-      description:
-        "Acquisition, transformation, analyse et modélisation des données pour éclairer les opérations et les décisions stratégiques.",
-      href: "/contact",
-    },
-    {
-      icon: "web",
-      title: "Web & Mobile App Design",
-      description:
-        "Applications web, mobiles et embarquées conçues pour vos processus métier et l’expérience de vos utilisateurs.",
-      href: "/contact",
-    },
-    {
-      icon: "proto",
-      title: "Prototyping & Reverse Engineering",
-      description:
-        "Modélisation CAD, impression 3D, scan 3D, layout hardware et prototypage PCB. De l’idée au démonstrateur technique.",
-      href: "/contact",
-    },
-    {
-      icon: "supply",
-      title: "Procurement & Supply Management",
-      description:
-        "Identification des besoins, gestion des fournisseurs et optimisation de la chaîne d’approvisionnement, avec un réseau d’associés.",
-      href: "/contact",
-    },
-    {
-      icon: "ai",
-      title: "AI-Integrated Smart Solutions",
-      description:
-        "Écosystème intégré : hardware, software, mécanique et intelligence artificielle, livré depuis une seule source.",
-      href: "/contact",
-    },
+    { icon: "systems", title: "Systems Engineering", description: t.services.systems, href: "/contact", cta: t.services.more },
+    { icon: "data", title: "Data Engineering & Analytics", description: t.services.data, href: "/contact", cta: t.services.more },
+    { icon: "web", title: "Web & Mobile App Design", description: t.services.web, href: "/contact", cta: t.services.more },
+    { icon: "proto", title: "Prototyping & Reverse Engineering", description: t.services.proto, href: "/contact", cta: t.services.more },
+    { icon: "supply", title: "Procurement & Supply Management", description: t.services.supply, href: "/contact", cta: t.services.more },
+    { icon: "ai", title: "AI-Integrated Smart Solutions", description: t.services.ai, href: "/contact", cta: t.services.more },
   ];
 
   const valueCreationMethods = [
-    { icon: "01", title: "Écouter", text: "Comprendre les attentes, contraintes et priorités des utilisateurs et des parties prenantes." },
-    { icon: "02", title: "Cadrer", text: "Clarifier le besoin, les résultats attendus, le périmètre et les critères de réussite." },
-    { icon: "03", title: "Concevoir", text: "Co-construire une solution réaliste, adaptée au contexte et techniquement robuste." },
-    { icon: "04", title: "Prototyper", text: "Rendre la solution concrète rapidement afin de valider les choix essentiels." },
-    { icon: "05", title: "Déployer", text: "Mettre en œuvre, accompagner les équipes et assurer une adoption opérationnelle." },
-    { icon: "06", title: "Améliorer", text: "Mesurer les résultats, recueillir les retours et faire évoluer la solution durablement." },
+    { icon: "01", title: t.methods.listen, text: t.methods.listenText },
+    { icon: "02", title: t.methods.frame, text: t.methods.frameText },
+    { icon: "03", title: t.methods.design, text: t.methods.designText },
+    { icon: "04", title: t.methods.proto, text: t.methods.protoText },
+    { icon: "05", title: t.methods.deploy, text: t.methods.deployText },
+    { icon: "06", title: t.methods.improve, text: t.methods.improveText },
   ];
 
   const footerData = {
     logo: { src: "/logo_new.jpeg", alt: "AMT Systems-Engineering SARL" },
-    about: text(
-      "AMT Systems-Engineering SARL est une structure basée à Douala, au Cameroun, engagée dans la promotion de l’ingénierie des systèmes comme facteur de développement, d’innovation et d’entrepreneuriat.",
-      "AMT Systems-Engineering SARL is based in Douala, Cameroon, and promotes systems engineering as a driver of development, innovation and entrepreneurship."
-    ),
+    about: t.footer.about,
     columns: [
       {
-        title: text("Expertises", "Expertise"),
+        title: t.footer.expertise,
         links: [
-          { label: text("Ingénierie de systèmes", "Systems engineering"), href: "/expertises" },
-          { label: text("Conseil stratégique", "Strategic consulting"), href: "/services" },
-          { label: text("Solutions numériques", "Digital solutions"), href: "/services" },
-          { label: text("Pilotage de projets", "Project management"), href: "/organisation" },
-          { label: text("Formation et accompagnement", "Training and support"), href: "/contact" },
+          { label: t.footer.systems, href: "/expertises" },
+          { label: t.footer.consulting, href: "/services" },
+          { label: t.footer.digital, href: "/services" },
+          { label: t.footer.projects, href: "/organisation" },
+          { label: t.footer.training, href: "/contact" },
         ],
       },
       {
-        title: text("Navigation", "Navigation"),
+        title: t.footer.navigation,
         links: [
-          { label: text("À propos", "About"), href: "/about" },
-          { label: text("Services", "Services"), href: "/services" },
-          { label: text("Méthode", "Approach"), href: "/methode" },
-          { label: text("Ressources", "Resources"), href: "/ressources" },
-          { label: text("Contact", "Contact"), href: "/contact" },
+          { label: t.nav.about, href: "/about" },
+          { label: t.nav.services, href: "/services" },
+          { label: t.nav.method, href: "/methode" },
+          { label: t.nav.resources, href: "/ressources" },
+          { label: t.nav.contact, href: "/contact" },
         ],
       },
     ],
     contact: {
       city: "Douala, Bonamoussadi, Terminus",
-      country: text("Cameroun", "Cameroon"),
+      country: t.footer.country,
       phone: "+237 681 249 814",
       whatsapp: "+237681249814",
       email: "contact@amtsyseng.com",
@@ -234,6 +132,8 @@ function App() {
       { label: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
     ],
     languages: { current: language, options: ["English", "Français"], onSelect: handleLanguageChange },
+    privacy: t.footer.privacy,
+    terms: t.footer.terms,
   };
 
   return (
@@ -243,45 +143,42 @@ function App() {
       <main data-page={page}>
         <section className="hero" data-page="/">
           <div className="hero__media">
-            <img src="/image_1.jpg" alt="Équipe AMT Systems-Engineering en session de conception" />
+            <img src="/image_1.jpg" alt={t.hero.alt} />
             <div className="hero__veil" />
           </div>
           <div className="hero__content">
             <span className="eyebrow eyebrow--light">Systems Engineering · Douala</span>
-            <h1>Ingénierie des systèmes au service de votre entreprise et de votre projet.</h1>
-            <p>
-              Depuis 2024, AMT Systems-Engineering SARL accompagne les entreprises, institutions et jeunes entrepreneurs
-              dans la conception et le déploiement de solutions technologiques utiles à l’émergence locale.
-            </p>
+            <h1>{t.hero.title}</h1>
+            <p>{t.hero.text}</p>
             <div className="hero__actions">
-              <a href="/contact" className="btn btn--primary">Nous contacter</a>
-              <a href="/services" className="btn btn--ghost">Découvrir nos services</a>
+              <a href="/contact" className="btn btn--primary">{t.hero.cta}</a>
+              <a href="/services" className="btn btn--ghost">{t.hero.secondary}</a>
             </div>
           </div>
         </section>
 
-        <section className="stats-bar" data-page="/" aria-label="AMT en chiffres">
+        <section className="stats-bar" data-page="/" aria-label={t.stats.aria}>
           <div className="container stats-bar__grid">
             <article className="stats-bar__item">
               <strong>Douala</strong>
-              <span>Ancrage local, Cameroun</span>
+              <span>{t.stats.local}</span>
             </article>
             <article className="stats-bar__item">
-              <strong>6 expertises</strong>
-              <span>Systèmes, data, software, hardware</span>
+              <strong>{t.stats.expertise}</strong>
+              <span>{t.stats.expertiseText}</span>
             </article>
             <article className="stats-bar__item">
-              <strong>Depuis 2024</strong>
-              <span>Innovation utile et mesurable</span>
+              <strong>{t.stats.since}</strong>
+              <span>{t.stats.sinceText}</span>
             </article>
             <article className="stats-bar__item">
-              <strong>1 source</strong>
-              <span>De l’idée au déploiement</span>
+              <strong>{t.stats.source}</strong>
+              <span>{t.stats.sourceText}</span>
             </article>
           </div>
         </section>
 
-        <section className="home-statement" data-page="/" aria-label="Engagement AMT Systems-Engineering">
+        <section className="home-statement" data-page="/" aria-label={t.statement.aria}>
           <div className="container home-statement__inner">
             <div className="home-statement__globe" aria-hidden="true">
               <div className="home-statement__orbit home-statement__orbit--one" />
@@ -291,7 +188,7 @@ function App() {
               </div>
             </div>
             <div className="home-statement__copy">
-              <p className="home-statement__line home-statement__line--first">Des solutions locales pour un besoin local.</p>
+              <p className="home-statement__line home-statement__line--first">{t.statement.first}</p>
               <p className="home-statement__line home-statement__line--second">We do it for you, and we do it well.</p>
             </div>
           </div>
@@ -300,108 +197,102 @@ function App() {
         <section className="section about" id="about" data-page="/about">
           <div className="container">
             <div className="section-title section-title--left">
-              <span className="eyebrow">À propos</span>
-              <h2>Comprendre les défis, développer les compétences et construire des solutions utiles à l’Afrique.</h2>
+              <span className="eyebrow">{t.about.eyebrow}</span>
+              <h2>{t.about.title}</h2>
             </div>
             <div className="about__intro-grid">
               <article className="panel about__challenges">
-                <span className="about__kicker">Le contexte</span>
-                <h3>Les défis de l’Afrique subsaharienne</h3>
-                <p>
-                  L’Afrique subsaharienne doit accélérer sa transformation tout en répondant à des besoins
-                  industriels, sociaux et économiques complexes.
-                </p>
+                <span className="about__kicker">{t.about.context}</span>
+                <h3>{t.about.challengesTitle}</h3>
+                <p>{t.about.challengesText}</p>
                 <ul className="about__challenges-list">
-                  <li>Renforcer les compétences locales</li>
-                  <li>Adapter les technologies au terrain</li>
-                  <li>Relier innovation et développement durable</li>
+                  <li>{t.about.challenge1}</li>
+                  <li>{t.about.challenge2}</li>
+                  <li>{t.about.challenge3}</li>
                 </ul>
                 <p>
-                  <strong>AMT répond</strong> par une approche intégrée : transformer les besoins en solutions et créer un pont
-                  entre savoirs académiques, expertise locale et bonnes pratiques internationales.
+                  <strong>{t.about.responseLead}</strong>{t.about.response}
                 </p>
               </article>
               <div className="about__cards about__direction">
                 <article className="info-card">
                   <span className="info-card__icon"><Icon name="vision" /></span>
-                  <h3>Notre vision</h3>
+                  <h3>{t.about.vision}</h3>
                   <p>
-                    Positionner le continent africain comme <strong>leader technologique</strong> en faisant de l’ingénierie
-                    des systèmes un moteur de transformation.
+                    {t.about.visionTextBefore}<strong>{t.about.visionStrong}</strong>{t.about.visionTextAfter}
                   </p>
                 </article>
                 <article className="info-card">
                   <span className="info-card__icon"><Icon name="mission" /></span>
-                  <h3>Notre mission</h3>
+                  <h3>{t.about.mission}</h3>
                   <p>
-                    Concevoir et déployer des <strong>solutions robustes et innovantes</strong> adaptées au contexte africain,
-                    avec une expertise locale.
+                    {t.about.missionTextBefore}<strong>{t.about.missionStrong}</strong>{t.about.missionTextAfter}
                   </p>
                 </article>
               </div>
             </div>
             <div className="about__pillars">
               <article className="panel">
-                <span className="about__kicker">Nos repères</span>
-                <h3>Les valeurs qui nous guident</h3>
+                <span className="about__kicker">{t.about.principles}</span>
+                <h3>{t.about.valuesTitle}</h3>
                 <ul className="about__list">
-                  <li><strong>Innovation</strong> utile et adaptée au contexte local</li>
-                  <li><strong>Excellence</strong>, rigueur et fiabilité</li>
-                  <li><strong>Intégrité</strong> et responsabilité</li>
-                  <li><strong>Collaboration</strong> et transmission des savoirs</li>
-                  <li><strong>Impact durable</strong> et développement inclusif</li>
+                  <li><strong>{t.about.value1Lead}</strong>{t.about.value1}</li>
+                  <li><strong>{t.about.value2Lead}</strong>{t.about.value2}</li>
+                  <li><strong>{t.about.value3Lead}</strong>{t.about.value3}</li>
+                  <li><strong>{t.about.value4Lead}</strong>{t.about.value4}</li>
+                  <li><strong>{t.about.value5Lead}</strong>{t.about.value5}</li>
                 </ul>
               </article>
               <article className="panel panel--accent">
-                <span className="about__kicker">Les moyens d’agir</span>
-                <h3>Les compétences au service de la mission</h3>
-                <p>Pour atteindre cette vision, AMT rassemble et développe des compétences complémentaires.</p>
+                <span className="about__kicker">{t.about.means}</span>
+                <h3>{t.about.skillsTitle}</h3>
+                <p>{t.about.skillsText}</p>
                 <div className="about__skills">
-                  <span>Ingénierie des systèmes</span>
-                  <span>Hardware & software</span>
-                  <span>Data & IA</span>
-                  <span>Mécanique</span>
-                  <span>Projets</span>
-                  <span>Leadership</span>
+                  <span>{t.about.skillSystems}</span>
+                  <span>{t.about.skillHw}</span>
+                  <span>{t.about.skillData}</span>
+                  <span>{t.about.skillMech}</span>
+                  <span>{t.about.skillProjects}</span>
+                  <span>{t.about.skillLeadership}</span>
                 </div>
               </article>
             </div>
             <div className="about__team">
               <div className="about__team-heading">
-                <span className="about__kicker">Notre force collective</span>
-                <h3>Une équipe au croisement de plusieurs expertises</h3>
-                <p>AMT s’appuie sur des profils complémentaires pour transformer chaque besoin en solution cohérente, réalisable et durable.</p>
+                <span className="about__kicker">{t.about.teamKicker}</span>
+                <h3>{t.about.teamTitle}</h3>
+                <p>{t.about.teamText}</p>
               </div>
               <div className="about__team-grid">
                 <article className="team-card">
                   <span className="team-card__number">01</span>
                   <h4>Executive Management</h4>
-                  <p>Stratégie, finances et administration d’AMT.</p>
+                  <p>{t.about.exec}</p>
                 </article>
                 <article className="team-card">
                   <span className="team-card__number">02</span>
                   <h4>CTO</h4>
-                  <p>Laboratoire, innovation et choix technologiques.</p>
+                  <p>{t.about.cto}</p>
                 </article>
                 <article className="team-card">
                   <span className="team-card__number">03</span>
                   <h4>CMO</h4>
-                  <p>Marketing, communication et activités commerciales.</p>
+                  <p>{t.about.cmo}</p>
                 </article>
                 <article className="team-card">
                   <span className="team-card__number">04</span>
                   <h4>Project Leaders</h4>
-                  <p>Conception et pilotage de projets de bout en bout.</p>
+                  <p>{t.about.leaders}</p>
                 </article>
                 <article className="team-card">
                   <span className="team-card__number">05</span>
                   <h4>Associates</h4>
-                  <p>Développeurs et étudiants mettant en œuvre les projets.</p>
+                  <p>{t.about.associates}</p>
                 </article>
                 <article className="team-card">
                   <span className="team-card__number">06</span>
                   <h4>External Partners</h4>
-                  <p>Experts internationaux pour renforcer nos compétences.</p>
+                  <p>{t.about.partners}</p>
                 </article>
               </div>
             </div>
@@ -410,51 +301,52 @@ function App() {
 
         <section className="section section--soft" id="services" data-page="/services">
           <div className="container">
-            <ServicesGrid services={services} />
+            <ServicesGrid
+              services={services}
+              eyebrow={t.services.eyebrow}
+              title={t.services.title}
+              intro={t.services.intro}
+            />
           </div>
         </section>
 
         <section className="section expertises" id="expertises" data-page="/expertises">
           <div className="container expertises__content">
             <div className="expertises__intro">
-              <span className="eyebrow">Nos expertises</span>
-              <h2>Des capacités complémentaires pour des solutions intégrées.</h2>
-              <p>
-                AMT associe l'ingénierie des systèmes, le développement hardware et software, l'analyse de données,
-                l'intelligence artificielle et l'ingénierie mécanique. Cette expertise multidisciplinaire nous permet
-                de concevoir, réaliser et accompagner des solutions adaptées aux besoins concrets de nos clients.
-              </p>
+              <span className="eyebrow">{t.expertises.eyebrow}</span>
+              <h2>{t.expertises.title}</h2>
+              <p>{t.expertises.intro}</p>
             </div>
-            <div className="expertises__list" aria-label="Capacités AMT">
+            <div className="expertises__list" aria-label={t.expertises.aria}>
               <article className="expertise-item">
-                <span className="expertise-item__label">Systèmes</span>
-                <h3>Ingénierie des systèmes</h3>
-                <p>Analyse des exigences, architecture, vérification et validation de systèmes complexes.</p>
+                <span className="expertise-item__label">{t.expertises.systemsLabel}</span>
+                <h3>{t.expertises.systemsTitle}</h3>
+                <p>{t.expertises.systemsText}</p>
               </article>
               <article className="expertise-item">
-                <span className="expertise-item__label">Numérique</span>
-                <h3>Hardware & software</h3>
-                <p>Conception d'applications, systèmes embarqués, interfaces et composants électroniques.</p>
+                <span className="expertise-item__label">{t.expertises.digitalLabel}</span>
+                <h3>{t.expertises.digitalTitle}</h3>
+                <p>{t.expertises.digitalText}</p>
               </article>
               <article className="expertise-item">
-                <span className="expertise-item__label">Données</span>
-                <h3>Data & intelligence artificielle</h3>
-                <p>Acquisition, modélisation et valorisation des données pour éclairer la décision.</p>
+                <span className="expertise-item__label">{t.expertises.dataLabel}</span>
+                <h3>{t.expertises.dataTitle}</h3>
+                <p>{t.expertises.dataText}</p>
               </article>
               <article className="expertise-item">
-                <span className="expertise-item__label">Conception</span>
-                <h3>Ingénierie mécanique</h3>
-                <p>Modélisation, prototypage et intégration des éléments matériels dans la solution finale.</p>
+                <span className="expertise-item__label">{t.expertises.designLabel}</span>
+                <h3>{t.expertises.designTitle}</h3>
+                <p>{t.expertises.designText}</p>
               </article>
               <article className="expertise-item">
-                <span className="expertise-item__label">Pilotage</span>
-                <h3>Gestion de projets</h3>
-                <p>Organisation, suivi et coordination pour faire progresser chaque projet avec rigueur.</p>
+                <span className="expertise-item__label">{t.expertises.leadLabel}</span>
+                <h3>{t.expertises.leadTitle}</h3>
+                <p>{t.expertises.leadText}</p>
               </article>
               <article className="expertise-item">
-                <span className="expertise-item__label">Impact</span>
-                <h3>Leadership & entrepreneuriat</h3>
-                <p>Mobilisation des talents et création de valeur durable au sein des organisations.</p>
+                <span className="expertise-item__label">{t.expertises.impactLabel}</span>
+                <h3>{t.expertises.impactTitle}</h3>
+                <p>{t.expertises.impactText}</p>
               </article>
             </div>
           </div>
@@ -463,17 +355,14 @@ function App() {
         <section className="section projects" id="projects" data-page="/projets">
           <div className="container">
             <div className="section-title">
-              <span className="eyebrow">Projets</span>
-              <h2>Des missions structurées pour créer de la valeur durable.</h2>
+              <span className="eyebrow">{t.projects.eyebrow}</span>
+              <h2>{t.projects.title}</h2>
             </div>
             <div className="coming-soon-placeholder">
               <span className="coming-soon-kicker">Portfolio</span>
-              <h3>Études de cas à venir</h3>
-              <p>
-                Nos projets de référence seront bientôt présentés ici : transformations numériques, innovations industrielles
-                et déploiements technologiques.
-              </p>
-              <a href="/contact" className="btn btn--secondary">Discutons de votre projet</a>
+              <h3>{t.projects.coming}</h3>
+              <p>{t.projects.text}</p>
+              <a href="/contact" className="btn btn--secondary">{t.projects.cta}</a>
             </div>
           </div>
         </section>
@@ -481,45 +370,42 @@ function App() {
         <section className="section process" id="nos-procedes" data-page="/organisation">
           <div className="container">
             <div className="section-title">
-              <span className="eyebrow">Notre organisation</span>
-              <h2>Nos procédés</h2>
+              <span className="eyebrow">{t.organisation.eyebrow}</span>
+              <h2>{t.organisation.title}</h2>
             </div>
-            <p className="lede">
-              Une organisation qui relie le pilotage, la relation client, la réalisation et les fonctions support autour
-              d’un même objectif : livrer une solution utile et fiable.
-            </p>
-            <div className="process-map" aria-label="Paysage des procédés AMT">
+            <p className="lede">{t.organisation.lede}</p>
+            <div className="process-map" aria-label={t.organisation.aria}>
               <article className="process-map__zone process-map__zone--management">
-                <span className="process-map__icon">Direction</span>
-                <h4>Management exécutif</h4>
-                <p><strong>Stratégie</strong>, finances et administration au service de l’ensemble de l’organisation.</p>
+                <span className="process-map__icon">{t.organisation.direction}</span>
+                <h4>{t.organisation.exec}</h4>
+                <p><strong>{t.organisation.execLead}</strong>{t.organisation.execText}</p>
               </article>
               <div className="process-map__connector" aria-hidden="true" />
               <article className="process-map__zone process-map__zone--acquisition">
-                <span className="process-map__icon">Entrée</span>
-                <h4>Marketing & acquisition</h4>
-                <p>Recueillir le besoin, comprendre le contexte et établir la relation avec le client.</p>
+                <span className="process-map__icon">{t.organisation.input}</span>
+                <h4>{t.organisation.acquisition}</h4>
+                <p>{t.organisation.acquisitionText}</p>
               </article>
               <div className="process-map__arrow" aria-hidden="true" />
               <article className="process-map__zone process-map__zone--development">
-                <span className="process-map__icon">Réalisation</span>
-                <h4>Développement</h4>
-                <p>Concevoir, réaliser, vérifier et améliorer les solutions tout au long du projet.</p>
+                <span className="process-map__icon">{t.organisation.delivery}</span>
+                <h4>{t.organisation.development}</h4>
+                <p>{t.organisation.developmentText}</p>
               </article>
               <div className="process-map__arrow" aria-hidden="true" />
               <article className="process-map__zone process-map__zone--delivery">
-                <span className="process-map__icon">Sortie</span>
-                <h4>Marketing & livraison</h4>
-                <p>Livrer la solution, accompagner son appropriation et maintenir la relation client.</p>
+                <span className="process-map__icon">{t.organisation.output}</span>
+                <h4>{t.organisation.marketing}</h4>
+                <p>{t.organisation.marketingText}</p>
               </article>
             </div>
             <div className="process-map__support">
-              <span className="process-map__support-label">Fonctions support & transverses</span>
-              <span>Ressources humaines</span>
-              <span>Contrôle qualité</span>
-              <span>Comptabilité & inventaire</span>
-              <span>Achats</span>
-              <span>IT, administration & partenaires</span>
+              <span className="process-map__support-label">{t.organisation.support}</span>
+              <span>{t.organisation.hr}</span>
+              <span>{t.organisation.quality}</span>
+              <span>{t.organisation.accounting}</span>
+              <span>{t.organisation.procurement}</span>
+              <span>{t.organisation.it}</span>
             </div>
           </div>
         </section>
@@ -527,25 +413,22 @@ function App() {
         <section className="section value-methods" id="creation-de-valeur" data-page="/methode">
           <div className="container">
             <div className="section-title">
-              <span className="eyebrow">Méthode</span>
-              <h2>Méthodes de création de valeur</h2>
+              <span className="eyebrow">{t.methods.eyebrow}</span>
+              <h2>{t.methods.title}</h2>
             </div>
-            <p className="lede">
-              Notre approche centrée client transforme un besoin réel en solution mesurable. Chaque étape alimente la suivante
-              et les retours du terrain nourrissent l’amélioration continue.
-            </p>
+            <p className="lede">{t.methods.lede}</p>
             <div className="value-methods__overview" aria-label="Customer centric approach">
-              <span>Écouter</span>
+              <span>{t.methods.listen}</span>
               <i aria-hidden="true" />
-              <span>Cadrer</span>
+              <span>{t.methods.frame}</span>
               <i aria-hidden="true" />
-              <span>Concevoir</span>
+              <span>{t.methods.design}</span>
               <i aria-hidden="true" />
-              <span>Prototyper</span>
+              <span>{t.methods.proto}</span>
               <i aria-hidden="true" />
-              <span>Déployer</span>
+              <span>{t.methods.deploy}</span>
               <i aria-hidden="true" />
-              <span>Améliorer</span>
+              <span>{t.methods.improve}</span>
             </div>
             <div className="value-methods__grid">
               {valueCreationMethods.map((method) => (
@@ -562,17 +445,15 @@ function App() {
         <section className="section downloads" id="telechargements" data-page="/ressources">
           <div className="container downloads__layout">
             <div className="section-title section-title--left">
-              <span className="eyebrow">Ressources</span>
-              <h2>Téléchargements</h2>
-              <p className="lede lede--left">
-                Consultez notre brochure pour découvrir la vision, les services et la démarche de création de valeur d’AMT.
-              </p>
+              <span className="eyebrow">{t.resources.eyebrow}</span>
+              <h2>{t.resources.title}</h2>
+              <p className="lede lede--left">{t.resources.lede}</p>
             </div>
             <article className="download-card">
               <span className="download-card__type">PDF</span>
-              <h3>Brochure AMT Systems-Engineering</h3>
-              <p>Présentation de l’entreprise, des expertises et de notre méthode de travail.</p>
-              <a href="/AMT_bro_final.pdf" download className="btn btn--secondary">Télécharger la brochure</a>
+              <h3>{t.resources.cardTitle}</h3>
+              <p>{t.resources.cardText}</p>
+              <a href="/AMT_bro_final.pdf" download className="btn btn--secondary">{t.resources.download}</a>
             </article>
           </div>
         </section>
@@ -580,14 +461,14 @@ function App() {
         <section className="section gallery" id="photos" data-page="/galerie">
           <div className="container">
             <div className="section-title">
-              <span className="eyebrow">Galerie</span>
-              <h2>L’équipe au travail</h2>
+              <span className="eyebrow">{t.gallery.eyebrow}</span>
+              <h2>{t.gallery.title}</h2>
             </div>
             <figure className="gallery__feature">
-              <img src="/image_1.jpg" alt="Session de travail AMT Systems-Engineering SARL" />
+              <img src="/image_1.jpg" alt={t.gallery.alt} />
               <figcaption>
-                <strong>Conception collaborative</strong>
-                <span>Ingénierie, prototypage et solutions numériques depuis Douala.</span>
+                <strong>{t.gallery.caption}</strong>
+                <span>{t.gallery.captionText}</span>
               </figcaption>
             </figure>
           </div>
@@ -596,19 +477,16 @@ function App() {
         <section className="section contact-wrap" id="contact" data-page="/contact">
           <div className="container contact-section">
             <div className="contact-section__info">
-              <span className="eyebrow">Contact</span>
-              <h2>Construisons ensemble des solutions utiles et durables.</h2>
-              <p>
-                Nous accompagnons les entreprises, institutions et jeunes talents dans la création de solutions
-                technologiques adaptées à leur contexte et à leurs ambitions de croissance.
-              </p>
+              <span className="eyebrow">{t.contact.eyebrow}</span>
+              <h2>{t.contact.title}</h2>
+              <p>{t.contact.text}</p>
               <ul className="contact-list">
                 <li>
-                  <span>Localisation</span>
-                  Douala, Bonamoussadi, Terminus, Cameroun
+                  <span>{t.contact.location}</span>
+                  {t.contact.locationValue}
                 </li>
                 <li>
-                  <span>Téléphone</span>
+                  <span>{t.contact.phone}</span>
                   <a href="tel:+237681249814">+237 681 249 814</a>
                 </li>
                 <li>
@@ -625,7 +503,7 @@ function App() {
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="contact-form__row">
                 <label className="field">
-                  <span>Nom</span>
+                  <span>{t.contact.name}</span>
                   <input type="text" name="name" value={formData.name} onChange={handleChange} required />
                 </label>
                 <label className="field">
@@ -635,21 +513,17 @@ function App() {
               </div>
 
               <label className="field">
-                <span>Entreprise</span>
+                <span>{t.contact.company}</span>
                 <input type="text" name="company" value={formData.company} onChange={handleChange} />
               </label>
 
               <label className="field">
-                <span>Message</span>
+                <span>{t.contact.message}</span>
                 <textarea name="message" rows="5" value={formData.message} onChange={handleChange} required />
               </label>
 
-              <button type="submit" className="btn btn--primary btn--full">Envoyer ma demande</button>
-              {submitted && (
-                <p className="success-message">
-                  Votre message a été préparé dans votre client email. Vous pouvez l’envoyer directement.
-                </p>
-              )}
+              <button type="submit" className="btn btn--primary btn--full">{t.contact.submit}</button>
+              {submitted && <p className="success-message">{t.contact.success}</p>}
             </form>
           </div>
         </section>

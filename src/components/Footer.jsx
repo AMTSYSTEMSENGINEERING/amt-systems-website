@@ -9,8 +9,9 @@ export default function Footer({
   socials = [],
   languages = { options: ["English", "Français"], onSelect: () => {} },
   year = new Date().getFullYear(),
+  privacy = "Confidentialité",
+  terms = "Conditions",
 }) {
-  const isEnglish = languages.current === "English";
 
   return (
     <footer className="footer">
@@ -41,7 +42,7 @@ export default function Footer({
         ))}
 
         <div>
-          <h4 className="footer__title">{isEnglish ? "Contact" : "Contact"}</h4>
+          <h4 className="footer__title">Contact</h4>
           <ul className="footer__contact">
             <li>{contact.city}, {contact.country}</li>
             <li><a href={`tel:${contact.phone.replace(/\s/g, "")}`}>{contact.phone}</a></li>
@@ -70,8 +71,8 @@ export default function Footer({
       <div className="footer__bottom">
         <p>© {year} AMT Systems-Engineering SARL</p>
         <div className="footer__legal">
-          <a href="/contact">{isEnglish ? "Privacy" : "Confidentialité"}</a>
-          <a href="/contact">{isEnglish ? "Terms" : "Conditions"}</a>
+          <a href="/contact">{privacy}</a>
+          <a href="/contact">{terms}</a>
         </div>
       </div>
     </footer>
