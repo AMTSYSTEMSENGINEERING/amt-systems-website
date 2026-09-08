@@ -101,11 +101,14 @@ function App() {
     setSubmitted(true);
   };
 
+  const isEnglish = language === "English";
+  const text = (french, english) => (isEnglish ? english : french);
+
   const navbarData = {
     logo: { src: "/logo_new.jpeg", alt: "AMT Systems-Engineering SARL" },
     nav: [
-      { label: "Accueil", href: "/" },
-      { label: "À propos", href: "/about" },
+      { label: text("Accueil", "Home"), href: "/" },
+      { label: text("À propos", "About"), href: "/about" },
       {
         label: "Services",
         items: [
@@ -114,20 +117,20 @@ function App() {
         ],
       },
       {
-        label: "Méthode",
+        label: text("Méthode", "Approach"),
         items: [
-          { label: "Notre organisation", href: "/organisation" },
-          { label: "Méthodes de création de valeur", href: "/methode" },
+          { label: text("Notre organisation", "Our organization"), href: "/organisation" },
+          { label: text("Méthodes de création de valeur", "Value creation methods"), href: "/methode" },
         ],
       },
       {
-        label: "Ressources",
+        label: text("Ressources", "Resources"),
         items: [
-          { label: "Téléchargements", href: "/ressources" },
-          { label: "Galerie", href: "/galerie" },
+          { label: text("Téléchargements", "Downloads"), href: "/ressources" },
+          { label: text("Galerie", "Gallery"), href: "/galerie" },
         ],
       },
-      { label: "Contact", href: "/contact" },
+      { label: text("Contact", "Contact"), href: "/contact" },
     ],
     languages: { current: language, options: ["English", "Français"], onSelect: handleLanguageChange },
   };
@@ -188,33 +191,35 @@ function App() {
 
   const footerData = {
     logo: { src: "/logo_new.jpeg", alt: "AMT Systems-Engineering SARL" },
-    about:
+    about: text(
       "AMT Systems-Engineering SARL est une structure basée à Douala, au Cameroun, engagée dans la promotion de l’ingénierie des systèmes comme facteur de développement, d’innovation et d’entrepreneuriat.",
+      "AMT Systems-Engineering SARL is based in Douala, Cameroon, and promotes systems engineering as a driver of development, innovation and entrepreneurship."
+    ),
     columns: [
       {
-        title: "Expertises",
+        title: text("Expertises", "Expertise"),
         links: [
-          { label: "Ingénierie de systèmes", href: "/expertises" },
-          { label: "Conseil stratégique", href: "/services" },
-          { label: "Solutions numériques", href: "/services" },
-          { label: "Pilotage de projets", href: "/organisation" },
-          { label: "Formation et accompagnement", href: "/contact" },
+          { label: text("Ingénierie de systèmes", "Systems engineering"), href: "/expertises" },
+          { label: text("Conseil stratégique", "Strategic consulting"), href: "/services" },
+          { label: text("Solutions numériques", "Digital solutions"), href: "/services" },
+          { label: text("Pilotage de projets", "Project management"), href: "/organisation" },
+          { label: text("Formation et accompagnement", "Training and support"), href: "/contact" },
         ],
       },
       {
-        title: "Navigation",
+        title: text("Navigation", "Navigation"),
         links: [
-          { label: "À propos", href: "/about" },
-          { label: "Services", href: "/services" },
-          { label: "Méthode", href: "/methode" },
-          { label: "Ressources", href: "/ressources" },
-          { label: "Contact", href: "/contact" },
+          { label: text("À propos", "About"), href: "/about" },
+          { label: text("Services", "Services"), href: "/services" },
+          { label: text("Méthode", "Approach"), href: "/methode" },
+          { label: text("Ressources", "Resources"), href: "/ressources" },
+          { label: text("Contact", "Contact"), href: "/contact" },
         ],
       },
     ],
     contact: {
       city: "Douala, Bonamoussadi, Terminus",
-      country: "Cameroun",
+      country: text("Cameroun", "Cameroon"),
       phone: "+237 681 249 814",
       whatsapp: "+237681249814",
       email: "contact@amtsyseng.com",
@@ -228,7 +233,7 @@ function App() {
       { label: "Instagram", href: "https://instagram.com", icon: "instagram" },
       { label: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
     ],
-    languages: { options: ["English", "Français"], onSelect: handleLanguageChange },
+    languages: { current: language, options: ["English", "Français"], onSelect: handleLanguageChange },
   };
 
   return (

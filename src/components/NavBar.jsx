@@ -34,7 +34,7 @@ export default function NavBar({
           <a className="nav__cta" href="/contact">{languages.current === "English" ? "Contact us" : "Nous contacter"}</a>
         </nav>
 
-        <button className="nav__burger" aria-label="Toggle menu" onClick={() => setOpen((v) => !v)}>
+        <button className="nav__burger" aria-label={languages.current === "English" ? "Toggle menu" : "Ouvrir le menu"} onClick={() => setOpen((v) => !v)}>
           {open ? "✕" : "☰"}
         </button>
       </div>
@@ -59,7 +59,7 @@ export default function NavBar({
           ))}
           <a className="nav__cta nav__cta--mobile" href="/contact" onClick={() => setOpen(false)}>{languages.current === "English" ? "Contact us" : "Nous contacter"}</a>
           <div className="nav__mobile-langs">
-            <div className="nav__mobile-langs-title">Language</div>
+            <div className="nav__mobile-langs-title">{languages.current === "English" ? "Language" : "Langue"}</div>
             {languages.options.map((lng) => (
               <button key={lng} type="button" className={`nav__mobile-lang ${lng === languages.current ? "is-active" : ""}`} onClick={() => languages.onSelect(lng)}>{lng}</button>
             ))}
