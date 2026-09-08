@@ -48,7 +48,7 @@ export default function Footer({
           </ul>
           <div className="footer__langs">
             {languages.options.map((lng) => (
-              <button key={lng} className="footer__langbtn" type="button">{lng}</button>
+              <button key={lng} className="footer__langbtn" type="button" onClick={() => languages.onSelect(lng)}>{lng}</button>
             ))}
           </div>
         </div>

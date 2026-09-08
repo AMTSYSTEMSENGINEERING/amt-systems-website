@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-export default function Dropdown({ label, items = [], align = "left" }) {
+export default function Dropdown({ label, items = [], align = "left", onSelect = () => {} }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -27,7 +27,11 @@ export default function Dropdown({ label, items = [], align = "left" }) {
         <ul className={`dd__menu ${align === "right" ? "dd__menu--right" : ""}`} role="menu">
           {items.map((it, i) => (
             <li key={i} role="none">
-              <a role="menuitem" className="dd__item" href={it.href || "#"} onClick={() => setOpen(false)}>
+              <a role="menuitem" className="dd__item" href={it.href || "#"} onClick={(event) => {
+                if (it.value) event.preventDefault();
+                onSelect(it.value || it.label);
+                setOpen(false);
+              }}>
                 {it.label}
               </a>
             </li>

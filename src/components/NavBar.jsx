@@ -28,9 +28,10 @@ export default function NavBar({
           <Dropdown
             label={languages.current === "English" ? "EN" : "FR"}
             align="right"
-            items={languages.options.map((lng) => ({ label: lng, href: "#" }))}
+            items={languages.options.map((lng) => ({ label: lng, value: lng, href: "#" }))}
+            onSelect={languages.onSelect}
           />
-          <a className="nav__cta" href="/contact">Nous contacter</a>
+          <a className="nav__cta" href="/contact">{languages.current === "English" ? "Contact us" : "Nous contacter"}</a>
         </nav>
 
         <button className="nav__burger" aria-label="Toggle menu" onClick={() => setOpen((v) => !v)}>
@@ -56,11 +57,11 @@ export default function NavBar({
               )}
             </div>
           ))}
-          <a className="nav__cta nav__cta--mobile" href="/contact" onClick={() => setOpen(false)}>Nous contacter</a>
+          <a className="nav__cta nav__cta--mobile" href="/contact" onClick={() => setOpen(false)}>{languages.current === "English" ? "Contact us" : "Nous contacter"}</a>
           <div className="nav__mobile-langs">
             <div className="nav__mobile-langs-title">Language</div>
             {languages.options.map((lng) => (
-              <button key={lng} className={`nav__mobile-lang ${lng === languages.current ? "is-active" : ""}`}>{lng}</button>
+              <button key={lng} type="button" className={`nav__mobile-lang ${lng === languages.current ? "is-active" : ""}`} onClick={() => languages.onSelect(lng)}>{lng}</button>
             ))}
           </div>
         </div>

@@ -1,10 +1,70 @@
-<<<<<<< HEAD
 import './styles.css';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavBar, ServicesGrid, Footer, Icon } from "./components";
+
+const englishTranslations = {
+  "Accueil": "Home", "À propos": "About", "Méthode": "Approach", "Notre organisation": "Our organization",
+  "Méthodes de création de valeur": "Value creation methods", "Ressources": "Resources", "Téléchargements": "Downloads",
+  "Galerie": "Gallery", "Contact": "Contact", "Nous contacter": "Contact us", "Langue": "Language",
+  "Ingénierie des systèmes au service de votre entreprise et de votre projet.": "Systems engineering for your business and your project.",
+  "Depuis 2024, AMT Systems-Engineering SARL accompagne les entreprises, institutions et jeunes entrepreneurs dans la conception et le déploiement de solutions technologiques utiles à l’émergence locale.": "Since 2024, AMT Systems-Engineering SARL has supported companies, institutions and young entrepreneurs in designing and deploying technology solutions that contribute to local development.",
+  "Comprendre les défis, développer les compétences et construire des solutions utiles à l’Afrique.": "Understand challenges, develop skills and build solutions that serve Africa.",
+  "L’Afrique subsaharienne doit accélérer sa transformation tout en répondant à des besoins industriels, sociaux et économiques complexes.": "Sub-Saharan Africa must accelerate its transformation while addressing complex industrial, social and economic needs.",
+  "AMT répond": "AMT responds", "par une approche intégrée : transformer les besoins en solutions et créer un pont": "through an integrated approach: turning needs into solutions and creating a bridge",
+  "entre savoirs académiques, expertise locale et bonnes pratiques internationales.": "between academic knowledge, local expertise and international best practices.",
+  "Positionner le continent africain comme": "Position the African continent as", "en faisant de l’ingénierie": "by making systems engineering",
+  "des systèmes un moteur de transformation.": "a driver of transformation.", "adaptées au contexte africain,": "adapted to the African context,", "avec une expertise locale.": "with local expertise.",
+  "Innovation": "Innovation", "utile et adaptée au contexte local": "useful and adapted to local realities", "Excellence": "Excellence", "rigueur et fiabilité": "rigor and reliability",
+  "Intégrité": "Integrity", "et responsabilité": "and responsibility", "Collaboration": "Collaboration", "et transmission des savoirs": "and knowledge sharing", "Impact durable": "Sustainable impact", "et développement inclusif": "and inclusive development",
+  "Ingénierie des systèmes": "Systems engineering", "Hardware & software": "Hardware & software", "Data & IA": "Data & AI", "Mécanique": "Mechanical engineering", "Projets": "Projects", "Leadership": "Leadership",
+  "Systems Engineering": "Systems Engineering", "Ingénierie complète : exigences, architecture hardware/software, vérification et validation. Conception robuste de systèmes complexes.": "End-to-end engineering: requirements, hardware/software architecture, verification and validation. Robust design for complex systems.",
+  "Acquisition, transformation, analyse et modélisation des données pour éclairer les opérations et les décisions stratégiques.": "Data acquisition, transformation, analysis and modeling to inform operations and strategic decisions.",
+  "Applications web, mobiles et embarquées conçues pour vos processus métier et l’expérience de vos utilisateurs.": "Web, mobile and embedded applications designed for your business processes and user experience.",
+  "Modélisation CAD, impression 3D, scan 3D, layout hardware et prototypage PCB. De l’idée au démonstrateur technique.": "CAD modeling, 3D printing, 3D scanning, hardware layout and PCB prototyping. From idea to technical demonstrator.",
+  "Identification des besoins, gestion des fournisseurs et optimisation de la chaîne d’approvisionnement, avec un réseau d’associés.": "Requirements identification, supplier management and supply-chain optimization through a network of associates.",
+  "Écosystème intégré : hardware, software, mécanique et intelligence artificielle, livré depuis une seule source.": "An integrated ecosystem of hardware, software, mechanics and artificial intelligence, delivered from a single source.",
+  "AMT associe l'ingénierie des systèmes, le développement hardware et software, l'analyse de données, l'intelligence artificielle et l'ingénierie mécanique. Cette expertise multidisciplinaire nous permet de concevoir, réaliser et accompagner des solutions adaptées aux besoins concrets de nos clients.": "AMT combines systems engineering, hardware and software development, data analysis, artificial intelligence and mechanical engineering. This multidisciplinary expertise allows us to design, build and support solutions adapted to our clients' concrete needs.",
+  "Analyse des exigences, architecture, vérification et validation de systèmes complexes.": "Requirements analysis, architecture, verification and validation of complex systems.", "Conception d'applications, systèmes embarqués, interfaces et composants électroniques.": "Design of applications, embedded systems, interfaces and electronic components.", "Acquisition, modélisation et valorisation des données pour éclairer la décision.": "Data acquisition, modeling and use to inform decisions.", "Modélisation, prototypage et intégration des éléments matériels dans la solution finale.": "Modeling, prototyping and integration of hardware into the final solution.", "Organisation, suivi et coordination pour faire progresser chaque projet avec rigueur.": "Organization, monitoring and coordination to move every project forward with rigor.", "Mobilisation des talents et création de valeur durable au sein des organisations.": "Mobilizing talent and creating lasting value within organizations.",
+  "Nos projets de référence seront bientôt présentés ici : transformations numériques, innovations industrielles et déploiements technologiques.": "Our reference projects will be presented here soon: digital transformations, industrial innovations and technology deployments.",
+  "Une organisation qui relie le pilotage, la relation client, la réalisation et les fonctions support autour d’un même objectif : livrer une solution utile et fiable.": "An organization that connects leadership, client relationships, delivery and support functions around one goal: delivering a useful and reliable solution.",
+  "Stratégie": "Strategy", "finances et administration au service de l’ensemble de l’organisation.": "finance and administration serving the entire organization.", "Recueillir le besoin, comprendre le contexte et établir la relation avec le client.": "Gather the need, understand the context and build the client relationship.", "Concevoir, réaliser, vérifier et améliorer les solutions tout au long du projet.": "Design, build, verify and improve solutions throughout the project.", "Livrer la solution, accompagner son appropriation et maintenir la relation client.": "Deliver the solution, support its adoption and maintain the client relationship.",
+  "Notre approche centrée client transforme un besoin réel en solution mesurable. Chaque étape alimente la suivante et les retours du terrain nourrissent l’amélioration continue.": "Our customer-centered approach turns a real need into a measurable solution. Each step informs the next, while field feedback drives continuous improvement.",
+  "Consultez notre brochure pour découvrir la vision, les services et la démarche de création de valeur d’AMT.": "Read our brochure to discover AMT's vision, services and value creation approach.", "Présentation de l’entreprise, des expertises et de notre méthode de travail.": "An overview of the company, our expertise and our working method.", "Télécharger la brochure": "Download the brochure", "Ingénierie, prototypage et solutions numériques depuis Douala.": "Engineering, prototyping and digital solutions from Douala.",
+  "Nous accompagnons les entreprises, institutions et jeunes talents dans la création de solutions technologiques adaptées à leur contexte et à leurs ambitions de croissance.": "We support companies, institutions and young talents in creating technology solutions adapted to their context and growth ambitions.", "Douala, Bonamoussadi, Terminus, Cameroun": "Douala, Bonamoussadi, Terminus, Cameroon", "Votre message a été préparé dans votre client email. Vous pouvez l’envoyer directement.": "Your message has been prepared in your email client. You can send it directly.",
+  "Découvrir nos services": "Explore our services", "Ancrage local, Cameroun": "Local roots, Cameroon", "6 expertises": "6 areas of expertise",
+  "Depuis 2024": "Since 2024", "Innovation utile et mesurable": "Useful, measurable innovation", "1 source": "One source",
+  "De l’idée au déploiement": "From idea to deployment", "Systèmes, data, software, hardware": "Systems, data, software, hardware",
+  "Des solutions locales pour un besoin local.": "Local solutions for local needs.", "Engagement AMT Systems-Engineering": "AMT Systems-Engineering commitment",
+  "Le contexte": "The context", "Les défis de l’Afrique subsaharienne": "The challenges of sub-Saharan Africa",
+  "Renforcer les compétences locales": "Strengthen local skills", "Adapter les technologies au terrain": "Adapt technologies to local realities", "Relier innovation et développement durable": "Connect innovation and sustainable development",
+  "Notre vision": "Our vision", "Notre mission": "Our mission", "leader technologique": "technology leader", "solutions robustes et innovantes": "robust and innovative solutions",
+  "Nos repères": "Our principles", "Les valeurs qui nous guident": "The values that guide us", "Les moyens d’agir": "Our capabilities", "Les compétences au service de la mission": "Skills serving the mission",
+  "Notre force collective": "Our collective strength", "Une équipe au croisement de plusieurs expertises": "A team at the intersection of several areas of expertise",
+  "Nos expertises": "Our expertise", "Des capacités complémentaires pour des solutions intégrées.": "Complementary capabilities for integrated solutions.",
+  "Des missions structurées pour créer de la valeur durable.": "Structured engagements that create lasting value.", "Études de cas à venir": "Case studies coming soon", "Discutons de votre projet": "Let's discuss your project",
+  "Nos procédés": "Our processes", "Management exécutif": "Executive management", "Réalisation": "Delivery", "Développement": "Development", "Sortie": "Output", "Marketing & livraison": "Marketing & delivery", "Direction": "Leadership", "Entrée": "Input",
+  "Fonctions support & transverses": "Support and cross-functional functions", "Ressources humaines": "Human resources", "Contrôle qualité": "Quality control", "Comptabilité & inventaire": "Accounting & inventory", "Achats": "Procurement", "IT, administration & partenaires": "IT, administration & partners",
+  "Écouter": "Listen", "Cadrer": "Frame", "Concevoir": "Design", "Prototyper": "Prototype", "Déployer": "Deploy", "Améliorer": "Improve",
+  "L’équipe au travail": "The team at work", "Conception collaborative": "Collaborative design", "Construisons ensemble des solutions utiles et durables.": "Let's build useful and sustainable solutions together.",
+  "Localisation": "Location", "Téléphone": "Phone", "Nom": "Name", "Entreprise": "Company", "Message": "Message", "Envoyer ma demande": "Send my request", "Confidentialité": "Privacy", "Conditions": "Terms"
+};
+
+function translatePage(language) {
+  document.documentElement.lang = language === "English" ? "en" : "fr";
+  if (language !== "English") return;
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  let node;
+  while ((node = walker.nextNode())) textNodes.push(node);
+  textNodes.forEach((textNode) => {
+    const trimmed = textNode.nodeValue.trim();
+    if (englishTranslations[trimmed]) textNode.nodeValue = textNode.nodeValue.replace(trimmed, englishTranslations[trimmed]);
+  });
+}
 
 function App() {
   const page = window.location.pathname.replace(/\/$/, "") || "/";
+  const [language, setLanguage] = useState("Français");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,6 +72,12 @@ function App() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    translatePage(language);
+  }, [language]);
+
+  const handleLanguageChange = (nextLanguage) => setLanguage(nextLanguage);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -56,7 +122,7 @@ function App() {
       },
       { label: "Contact", href: "/contact" },
     ],
-    languages: { current: "Français", options: ["English", "Français"], onSelect: (lng) => console.log(lng) },
+    languages: { current: language, options: ["English", "Français"], onSelect: handleLanguageChange },
   };
 
   const services = [
@@ -155,7 +221,7 @@ function App() {
       { label: "Instagram", href: "https://instagram.com", icon: "instagram" },
       { label: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
     ],
-    languages: { options: ["English", "Français"], onSelect: (lng) => console.log(lng) },
+    languages: { options: ["English", "Français"], onSelect: handleLanguageChange },
   };
 
   return (
@@ -581,28 +647,5 @@ function App() {
     </div>
   );
 }
-=======
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from './pages/HomePage';
-import AvisSlider from './avis/avis'
-import Contact from './contact/contact'
-import Header from './components/NavBar';
-import Footer from './components/Footer';
-
-const App = () => (
-  <BrowserRouter>
-   <Contact/> 
-    <AvisSlider/>
-    <Header />
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/" element={ <Contact/> } />
-   <Route path="/" element={ <AvisSlider/>} />
-    </Routes>
-    <Footer />
-  </BrowserRouter>
-);
->>>>>>> origin/feature-slider-swiper
 
 export default App;
