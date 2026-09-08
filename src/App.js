@@ -64,7 +64,10 @@ function translatePage(language) {
 
 function App() {
   const page = window.location.pathname.replace(/\/$/, "") || "/";
-  const [language, setLanguage] = useState("Français");
+  const [language, setLanguage] = useState(() => {
+    const savedLanguage = window.localStorage.getItem("amt-language");
+    return savedLanguage === "English" || savedLanguage === "Français" ? savedLanguage : "Français";
+  });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -77,7 +80,11 @@ function App() {
     translatePage(language);
   }, [language]);
 
-  const handleLanguageChange = (nextLanguage) => setLanguage(nextLanguage);
+  const handleLanguageChange = (nextLanguage) => {
+    if (nextLanguage !== "English" && nextLanguage !== "Français") return;
+    window.localStorage.setItem("amt-language", nextLanguage);
+    setLanguage(nextLanguage);
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
